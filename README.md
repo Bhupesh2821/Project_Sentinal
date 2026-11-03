@@ -1,0 +1,74 @@
+# SENTINAL V0.2.1 — MARK-007
+
+A local macOS safety-monitoring hackathon prototype for **November 4, 2026**. It extends the existing Vision Core with real trained weapon and fire/smoke models, temporal incident assessment, local warnings and operator review. **Prototype accuracy is limited; detections are uncertain visual observations.**
+
+The only project root is `/Users/prabhuram04yahoo.com/Documents/Bhupesh/Projects/Project Sentinal`. Source, models, virtual environment, imported videos, databases, logs, caches, history and archives remain here. Camera credentials may be explicitly saved in macOS Keychain, the operating system's credential store. No footage is uploaded.
+
+## Launch
+
+On this Mac, double-click **launch.command**. For the bundled silent, public-domain moving-weapon demonstration, double-click **demo.command**. Its explicit weapon-only profile uses confidence0.35 and0.3s persistence; enable fire/smoke in Operator center for the next source. Both handle spaces in paths. Neither opens a camera automatically. Start is always an explicit action.
+
+For a fresh installation, install a compatible Python 3.12 interpreter, then run **install.command** once. It creates `.venv` inside this folder, installs pinned dependencies, verifies/downloads pinned model files and checks dependency consistency. Internet is needed during installation; normal inference runs locally. A signed standalone `.app` is not included.
+
+From Terminal:
+
+```sh
+cd "/Users/prabhuram04yahoo.com/Documents/Bhupesh/Projects/Project Sentinal"
+./launch.command
+# Or preselect a local video without starting capture:
+./launch.command --video "/absolute/path/to/video.mp4"
+# Demonstration preset, still requiring Start:
+./demo.command
+```
+
+## V0.2.1 detection and simultaneous cameras
+
+**Show all objects + enable weapon / fire models** clears the people/bags-only filter and enables the installed hazard modules. This does not start a camera or enable recording. Spoon/scissors use the ordinary model; knife/firearm/fire/smoke observations come from their actual trained models. A toy may look weapon-like to the model. Loose blades have no dedicated validated detector. The optional fourth YOLO11s model improves some scissors examples but also introduces misclassifications; existing model choices and the default remain unchanged.
+
+Object boxes no longer disappear merely because ByteTrack has not assigned an ID. **Operator center → AI settings** separates **Hazard box display score** from **Alert confidence threshold**, with optional per-category display scores. Default box score0.25 and alert score0.60 have different purposes. A box below the alert threshold remains an uncertain observation. The selected evaluation still contains major misses/false positives; [the investigation](docs/DETECTION_RELIABILITY_V021.md) gives actual per-model counts.
+
+With hazard analysis active, video displays the latest complete AI-sampled frame, labelled with its timestamp. This keeps boxes on their exact input pixels between hazard samples. The picture updates at the configured hazard sampling rate; processing FPS/latency continue to describe actual processed packets. Disable hazard analysis for ordinary per-frame display. A newer empty hazard sample removes the previous boxes; source loss clears the display.
+
+Open **Multi-camera monitor** for up to eight explicitly selected saved cameras. Save each Mac/iPhone identity or authorized ONVIF/RTSP stream in camera management, check the intended rows, choose **Use checked cameras**, then **Start checked cameras** in the wall. Each feed has its own Stop, health, measured performance, observations and incident warning. **Review incidents** opens the shared incident center. Models are shared, capture/track sessions are isolated, and more feeds reduce per-camera throughput. Two simultaneous actual local RTSP streams have been exercised; 4/8-source scheduling has component coverage, not physical-camera performance acceptance.
+
+**Nearby CCTV** lists ONVIF-advertised camera services on the selected local interface after explicit Refresh. An advertisement does not prove authentication or video availability. Manual authorized addresses remain available. [Network setup details](docs/NEARBY_CCTV_V021.md) explain permissions, hidden/proprietary devices and supported limits.
+
+[Base44 feasibility](docs/BASE44_FEASIBILITY.md) evaluates a future website/installable interface while retaining the local inference engine. No website was deployed or private project data uploaded.
+
+## Monitor a source
+
+- **Mac / iPhone:** choose the exact camera, then Start. Stop before changing devices. An unavailable selected camera never silently switches to another. macOS Continuity Camera availability depends on your devices and permissions.
+- **Videos:** import or drop a video at any time. Imports are copied into `data/videos`, validated and deduplicated; pause, seek and replay are supported. Upload here means a local import, without a server upload.
+- **CCTV:** use Manage named cameras or Find / connect CCTV. Select an authorized ONVIF profile or enter its RTSP/HTTP video URL. Use selects the source; Start opens it. Save in Keychain only if desired. Proprietary cloud-only cameras may not expose a compatible stream. Wi-Fi does not make every CCTV compatible.
+
+Enable **Analyze possible hazards** for the additional detectors. In **Operator center → AI settings**, choose active models, separate flame/smoke observations, confidence, sample interval, confirmation count, persistence, maximum gap and cooldown. The live sidebar controls inference resolution. Defaults favor conservative confirmation; slow processing may require a larger maximum gap.
+
+Ordinary people/bag/tool detection remains separate from specialized hazard observations. The searchable 577-category catalog describes supported labels, not independently verified accuracy for all categories. Bounding boxes, confidence and tracker IDs are estimates.
+
+## Alerts and review
+
+A fresh observation becomes a candidate, then an uncertain alert only when its temporal rule passes. The dashboard shows **POSSIBLE**, source, actual score/time and pending human review. Multiple separate objects may produce separate incidents; repeated predictions do not create a new alert each frame.
+
+Open **Operator center → Incident center** to filter, acknowledge, verify, dismiss or close an incident. Confidence is separate from severity. Verification records an operator's judgment; it does not establish criminal intent.
+
+**Incident metadata, evidence snapshots, ordinary detection metadata, sound and desktop notifications start off.** Enable them deliberately. Without incident recording, history lasts only for the current session. Optional sound has volume/severity controls and cooldown; Test enabled sound tests your output. No emergency service or external recipient is contacted.
+
+Saved incidents use local SQLite with an audit trail. Evidence is owner-only plaintext with SHA256 integrity checking; no application-layer encryption or tamper-proof audit is claimed. Review retention/deletion and local-account boundaries in [incident services](docs/INCIDENTS_V02.md).
+
+## Verification and limitations
+
+[Verification report](VERIFICATION_REPORT.md) records actual tests, native desktop/hardware checks, benchmarks, failures and gaps. [Hackathon instructions](HACKATHON_DEMO.md) provide the exact demonstration sequence. [Model manifest](docs/MODEL_MANIFEST_V02.md) gives pinned sources, hashes, classes, licenses and restrictions. [Architecture](docs/ARCHITECTURE_V02.md) describes extension points.
+
+Licensed bundled repeated-still clips exercise genuine inference and the full alert/review flow, but do not establish accuracy on naturally moving objects, occlusion or field deployment. Public moving footage, when provided, is identified separately. False positives and misses remain in evaluation evidence. The prototype is not a certified fire alarm or autonomous threat decision system. GHS recognition and remote notifications are unavailable in this build.
+
+## Troubleshooting
+
+- **No camera / permission:** quit other camera applications, allow camera access to the launching application in macOS Privacy & Security, reconnect the exact device and refresh. Imported videos remain available.
+- **No hazard boxes:** confirm Analyze possible hazards, enabled models, suitable footage and threshold; check Diagnostics for active/unavailable status. A generic object catalog is not a weapon model.
+- **No alert despite boxes:** the observation must persist across the configured number of fresh analyzed samples within the allowed gap. Lower throughput, misses and tracking changes can prevent confirmation. Inspect measured timings and the rule; do not treat silence as safety.
+- **Network failure:** verify the authorized address, credentials, codec and network reachability. Reconnect attempts are bounded with backoff. Cloud-only devices need a supported local stream.
+- **Weights missing / altered:** rerun the pinned installer/download tool. Unknown or modified specialized checkpoints are rejected; no runtime model downloads occur.
+- **Storage failure:** recording is disabled and an error is displayed; visual analysis may continue. Check permissions/free space before relying on saved history.
+- **Slow MPS / unsupported operation:** CPU fallback is available. Reduce resolution or active models. Diagnostics reports actual device and latency; FPS is not guaranteed.
+
+Run `test.command` for the automated suite, including the available real recorded-video fixture. Native checks are separate tools under `tools/`; their scope is documented in the report. Logs rotate under `logs/`. User videos are never auto-deleted; optional incident/evidence retention is bounded and enforced when the service/store is used.

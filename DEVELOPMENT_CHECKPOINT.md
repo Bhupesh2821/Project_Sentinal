@@ -1,0 +1,34 @@
+# SENTINAL development checkpoint
+
+The source implementation is in this folder. Preserve it; do not rebuild from scratch.
+
+The 2026-10-20 development run was interrupted by the account usage limit after source creation and dependency downloads. Development resumed on 2026-10-21. Dependencies now installed in .venv; requirements-lock.txt records the actual environment. Unused PySide6 WebEngine/PDF bundles were removed; native Essentials/Addons remain.
+
+The authoritative final status belongs in VERIFICATION_REPORT.md and raw JSON/screenshots under docs/evidence. Never mark a capability verified merely from source or mock tests. Downloaded public real fixtures are listed in docs/FIXTURES.md. Camera footage is not stored by default.
+
+Core boundaries: VisionPipeline -> FramePacket, persistent InferenceWorker with one-frame mailbox -> MainWindow; optional EventManager -> DetectionDatabase. Tests, GUI verification and offline verification must be rerun after relevant source changes. No advanced BAGWATCH logic has been implemented.
+
+Final validation on 2026-10-21: 136 pytest tests passed including real video; native Cocoa desktop 34 checks passed; actual built-in camera UI 83 checks passed across five sessions; CPU/MPS benchmark complete. Final report lists remaining moving-bag/field and long-run coverage. Source implementation is finished for demonstrated paths.
+
+2026-10-26 storage relocation: the user requires all future project-owned data only in `/Users/prabhuram04yahoo.com/Documents/Bhupesh/Projects/Project Sentinal`. The previous workspace is empty. 33,331 files/links were moved and verified; 46 console entrypoints were repaired for the space-containing path. Source and launcher now keep caches/temp files local. Relocated regression: 136 tests passed and 34 native desktop checks passed. Conversation exports are under history/conversations. Read AGENTS.md and LOCATION.md before continuing. Do not recreate the old project workspace contents.
+
+2026-10-27 implementation update: V0.1.1 dynamicinputs finished. New video_library/video_import_worker, networkSourceSpec, isolated live_capture, pause/seek/resolution/reconnect worker, dynamic UIimport/drop/library, runtime streamconfiguration and new regressions are all in the canonical root. Final verification:203tests passed;52native dynamic-input/network checks;35legacyfile/metadata checks (isolatedtestDB);98cameraGUIchecks;60scamera/MPSobservation warm23.99FPS17.11ms. No camera media saved. Known testimports preserved in data/verification-inputs; private user imports not touched. Physical IPcamera endpoint still required for device-specific validation. Read current VERIFICATION_REPORT.md/RELEASE_NOTES.md before continuing; no V0.2 rules implemented.
+
+
+2026-10-29: V0.1.2 exact-ID Mac/iPhone capture, ONVIF setup and expanded catalogs are implemented. Camera capture tested on both physical devices; native Mac GUI, actual ONVIF-to-video loopback and dynamic input regressions passed. Safety/tool recognition remains experimental with substantial documented misses. Read current VERIFICATION_REPORT.md before continuing; all project files remain here.
+
+Final V0.1.2 regression: 261 automated tests passed; 52 native dynamic-input checks, 33 native ONVIF-to-video checks, 35 native metadata/file checks, and the exact-device camera evidence are retained. Higher-capacity expanded model CPU/MPS ladder inference passed; safety recognition remains experimental.
+
+
+2026-11-02 V0.2 release checkpoint: the existing project now integrates real specialized GingerBrains YOLOv8s weapon and luminous0219 YOLOv8n fire/smoke models, restricted/checksummed loading, one bounded pipeline, temporal incidents, local opt-in sound/desktop output, SQLite review/audit/evidence, Keychain camera registry and Operator center. Source version0.2.0 is a hackathon prototype, not full field acceptance. The selected checkpoints/classes/licenses and serious17-scene quality limits are in docs/MODEL_MANIFEST_V02.md; fixtures are attributed in docs/FIXTURES_V02.md.
+
+Full automated387tests passed with exit0 after explicit Qt test lifetime cleanup; initial post-summary native teardown failure retained. Native actual moving weapon/fire alerts and human review passed, final smoke repeated-still path passed, final demo entry12checks passed with recordingoff. Final selected-model Mac cameras passed; iPhone became unavailable/intermittent and remains partial. Actual localhostRTSP/auth/recoverypassed, physicalCCTVnotavailable. No camera images/objectrecords/audio saved duringhardwareverification. See VERIFICATION_REPORT.md and raw v02 evidence for counts, current sources and performance rather than assuming all earlier reports refer to final models.
+
+Launch normally with launch.command. demo.command now preselects the silent public-domain moving range clip, weapon-only confidence.35/persistence.3/maxgap2 profile; still requiresStart, allrecording/audiooff. Enablefire/smokeinOperatorcenterfornextsource. Releasearchive includes onlyselectedlicensedweights/PD-CCfixtures/defaultconfig, excludesprivateuserstores/credentials/runtime/history/rawstock/experimentalmodels. Alllocalprojectdata remains in this canonicalfolder. FutureBAGWATCHextensioninterfaces are documented without advancedfeatureclaims.
+
+
+2026-11-03 V0.2.1 checkpoint: continued in canonical root from existing source backup. Fixed raw-prediction loss through tracker confirmation, separated display/alert thresholds, and retained exact sampled pixels for hazard overlays. Added interface-aware Nearby CCTV list, batch selection and bounded shared-model eight-source camera wall, per-camera incident intake, visible alerts/review, cleanup-safe restart and source filters. Optional official YOLO11s remains fourth profile; default preserved. Real24-scene/1140-forward-pass evaluation retains substantial misses/FPs; no broad sharp-object/fire reliability claim.
+
+Final476automated tests passed20.03s/exit0;21wall UI tests,37native actualtwoRTSPwall checks,14coretwoRTSPreconnect checks,8actualentry/12movingdemo checks,14actualMac checks andlocalCPU/MPSsocketguard inference passed. Nativewallrun preceded lastmodelcontrol-only guard covered by21UI andfinal476suite. Phone was not enumerated andnot substituted; physicalCCTV notavailable. Mac452observedprocessedpackets/57specializedsamples, nodatarecorded. See currentVERIFICATION_REPORT anddocs/evidence/v021-2026-11-03 foractualscope/timings. Oldfailedharness/test runsarepreserved andexplained.
+
+Sourceversion0.2.1. README/demo/release/architecture/fixture/modeldocsupdated. Base44 evaluatedonly: localPythonengine shouldremain; cloudmigration/website/appbridge unimplemented. PreserveV0.2.0archive and sourcebackup; packagecurrentversion onlyafterfinalverification, withpublicassets/technicalevidence andno userstores/runtime.
