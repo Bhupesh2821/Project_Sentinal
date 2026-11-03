@@ -1,5 +1,6 @@
 # SENTINAL V0.2.1 — MARK-007
-
+(Due to Storage limitations project has been uploaded in drive. 
+Drive link: https://drive.google.com/drive/folders/1r6tUR5Kz91T_Dp-tK3nGtzYzyIxX8TuZ?usp=sharing)
 A local macOS safety-monitoring hackathon prototype for **November 4, 2026**. It extends the existing Vision Core with real trained weapon and fire/smoke models, temporal incident assessment, local warnings and operator review. **Prototype accuracy is limited; detections are uncertain visual observations.**
 
 The only project root is `/Users/prabhuram04yahoo.com/Documents/Bhupesh/Projects/Project Sentinal`. Source, models, virtual environment, imported videos, databases, logs, caches, history and archives remain here. Camera credentials may be explicitly saved in macOS Keychain, the operating system's credential store. No footage is uploaded.
