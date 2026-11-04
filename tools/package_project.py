@@ -5,6 +5,8 @@ import argparse
 import hashlib
 import json
 import os
+import plistlib
+import subprocess
 import sys
 import zipfile
 
@@ -120,7 +122,7 @@ def eligible_source(path,root):
     # Historical camera reports can contain personal names and raw device IDs.
     # Preserve them locally; ship only current technical/hash-only V0.2 evidence.
     if relative.parts[:2]==('docs','evidence'):
-        return len(relative.parts)>2 and relative.parts[2].startswith(('v02-','v021-','v03-'))
+        return len(relative.parts)>2 and relative.parts[2].startswith(('v02-','v021-','v03-','v031-'))
     if len(relative.parts)>1 and relative.parts[0]=='docs' and relative.parts[1].startswith('verification'):
         return path.suffix=='.md'
     return True
@@ -147,6 +149,35 @@ def collect_release_files(root=ROOT):
     return sorted(files)
 
 
+
+NATIVE_APP_FILES={
+    'Contents/Info.plist','Contents/MacOS/SENTINAL',
+    'Contents/Resources/SENTINAL.icns','Contents/Resources/ProjectRoot.plist',
+    'Contents/Resources/bootstrap.py','Contents/_CodeSignature/CodeResources',
+}
+
+
+def native_app_entries(root=ROOT):
+    """Only the reviewed small native host enters the package, without runtime stores."""
+    root=Path(root);bundle=root/'dist/SENTINAL.app'
+    if not bundle.exists():return []
+    if bundle.is_symlink() or not bundle.resolve().is_relative_to(root.resolve()):raise ValueError('Native app cannot be an external symlink')
+    entries=[];found=set()
+    for path in bundle.rglob('*'):
+        if path.is_symlink():raise ValueError('Native app contains a symlink')
+        if not path.is_file():continue
+        relative=path.relative_to(bundle).as_posix()
+        if relative not in NATIVE_APP_FILES:raise ValueError('Unreviewed native app file cannot enter the release')
+        found.add(relative);entries.append((path,Path('SENTINAL/SENTINAL.app')/relative))
+    if found!=NATIVE_APP_FILES:raise ValueError('Native application is incomplete')
+    info=plistlib.loads((bundle/'Contents/Info.plist').read_bytes())
+    if info.get('CFBundleExecutable')!='SENTINAL' or info.get('CFBundleShortVersionString')!=__version__ or not info.get('NSCameraUsageDescription'):
+        raise ValueError('Native application identity, version or camera permission text is invalid')
+    bootstrap=root/'tools/macos/bootstrap.py'
+    if not bootstrap.is_file() or digest(bootstrap)!=digest(bundle/'Contents/Resources/bootstrap.py'):raise ValueError('Native app bootstrap differs from the reviewed source')
+    return sorted(entries)
+
+
 def main(argv=None):
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--report',default='docs/evidence/release-archive-check.json')
@@ -156,6 +187,9 @@ def main(argv=None):
     output=ROOT/'archives'/f'SENTINAL-V{__version__}-macOS.zip'
     output.parent.mkdir(parents=True,exist_ok=True)
     files=[path for path in collect_release_files() if path!=report_path]
+    native=native_app_entries()
+    if not native:raise ValueError('Build the verified native app with tools/build_macos_app.py before packaging')
+    subprocess.run(['/usr/bin/codesign','--verify','--strict',str(ROOT/'dist/SENTINAL.app')],check=True,capture_output=True)
     from sentinal.config import AppConfig
     from sentinal.vision.model_registry import ASSETS
     required=['main.py','launch.command','install.command','demo.command','web.command','HACKATHON_DEMO.md',
@@ -182,6 +216,7 @@ def main(argv=None):
     try:
         with zipfile.ZipFile(partial,'w',zipfile.ZIP_DEFLATED,compresslevel=6) as archive:
             for path in files:archive.write(path,Path('SENTINAL')/path.relative_to(ROOT))
+            for path,target in native:archive.write(path,target)
             archive.writestr('SENTINAL/config/settings.json',json.dumps(asdict(AppConfig()),indent=2)+'\n')
             for directory in ['logs','recordings','data/videos','work/tmp']:archive.writestr(f'SENTINAL/{directory}/',b'')
         with zipfile.ZipFile(partial) as archive:
@@ -204,8 +239,8 @@ def main(argv=None):
     checksum=digest(output);output.with_suffix('.zip.sha256').write_text(f'{checksum}  {output.name}\n')
     report={'passed':True,'version':__version__,'archive':str(output.relative_to(ROOT)),'bytes':output.stat().st_size,
         'members':len(names),'sha256':checksum,'zip_crc_verified':True,'executable_scripts_verified':True,
-        'selected_models_verified':True,'public_fixture_manifest_verified':True,
-        'includes':'desktop and connected source, Base44 frontend/functions/schema and pinned package lock, pinned Python dependencies, selected licensed weights, approved public fixtures, current technical evidence, default configuration',
+        'selected_models_verified':True,'public_fixture_manifest_verified':True,'native_app_included':True,'native_app_project_linked':True,
+        'includes':'project-linked native SENTINAL.app, desktop and connected source, Base44 frontend/functions/schema and pinned package lock, pinned Python dependencies, selected licensed weights, approved public fixtures, current technical evidence, default configuration',
         'excludes':'installed environment, all user settings/cameras/credentials, user media/databases/evidence, runtime caches/logs, exploratory checkpoints, local test executables and conversation/history files'}
     report_path.parent.mkdir(parents=True,exist_ok=True);report_path.write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps(report,indent=2));return 0

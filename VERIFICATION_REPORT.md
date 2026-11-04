@@ -1,66 +1,45 @@
-# SENTINAL V0.3.0 — verification and delivery
+# SENTINAL V0.3.1 — dashboard access repair and Mac app verification
 
-Report date: November 4, 2026 (Asia/Kolkata). **Status: integrated connected hackathon prototype; the hosted vertical slice has passed; distribution readbacks are recorded in the companion delivery manifest. Detector reliability remains experimental.**
+Report date: November 4, 2026. **The owner confirmed that the dashboard now opens. The native Mac app was built and passed actual recorded-video operation.** This remains a development prototype with the existing detection errors and hardware limits.
 
-Canonical root: `/Users/prabhuram04yahoo.com/Documents/Bhupesh/Projects/ProjectSentinal`. The pre-V0.3 source checkpoint is `history/implementation-v03-2026-11-03/`; the V0.2.1 reports and archive are preserved. No unrelated project was modified.
+Canonical root: `/Users/prabhuram04yahoo.com/Documents/Bhupesh/Projects/ProjectSentinal`. The original V0.3.0 source commit, full archive and reports are preserved; the pre-change record is `history/implementation-v03-access-app-2026-11-04/baseline.json`.
 
-## Implemented
+## Dashboard correction
 
-- The original Python Vision Core, trained models, exact Mac/iPhone selection, dynamic video import, ONVIF/RTSP sources and bounded camera wall are preserved. No replacement camera framework or mock detections were introduced.
-- Explicit desktop outbound metadata connection and a headless monitor reuse actual inference and temporal incidents. HMAC-signed HTTPS delivery, event IDs, bounded persistent retries, replay checks, destination-bound outboxes and measured heartbeats connect to either the local service or the separately paired Base44 gateway. Camera capture and delivery require independent explicit action.
-- Responsive public website and private overview/live/models/incidents/cameras/administration dashboard; persisted incidents, viewer/operator/admin permissions, review notes, optimistic versions, audit and retention. Local cookie/CSRF authentication is separate from native Base44 authentication. There is no default human password.
-- Private local SQLite authority; a designated Base44 project uses a bounded single-organization state entity with direct row access denied and checked functions as the hosted authority. Local and cloud stores are not bidirectionally synchronized. Hosted incident cap200, audit1000, paired devices32; these are prototype bounds, not a fleet platform.
-- Optional loopback-only authenticated RAM preview, off by default and expiring after3s. Hosted video delivery is unavailable. No RTSP URLs, passwords, private footage, evidence paths or facial identities enter incident delivery. Public PWA assets are cached; private data is not.
-- Account changes invalidate delayed private responses and clear unsaved drafts. The desktop preserves hosted pairing transport settings and no longer reports active inference after stopping. Exporters exclude private stores, credentials, installed dependencies and build caches.
+The old button called the SDK's generic `/login` route. On this CLI static deployment, that address served the public landing page, so it never reached authentication. The earlier hosted tests used an existing app-scoped session and missed the first-login failure.
 
-## Executed validation
+V0.3.1 uses the supported Google provider entry, recovers old login bookmarks, waits until sign-in handlers are ready, and exposes Retry connection, sign-out/switch-account and understandable session/network/permission errors. No native memberships, entity permissions or incident records were weakened or replaced. The user independently confirmed **“Dashboard opens”** with the configured owner account.
 
-The final complete pytest run passed **583 tests, zero failures/skips,64.47seconds, exit0**, recorded in `docs/evidence/v03-2026-11-03/pytest-final.txt`. The earlier pre-final-guard run passed550tests in64.90s; it is preserved separately and is not substituted for the final result.
+Public website: [SENTINAL](https://sentinal-command-center-df4fc282.base44.app). Private dashboard: [Command center](https://sentinal-command-center-df4fc282.base44.app/app.html). Select **Continue with Google** and your authorized account. Video inference remains local.
 
-| Check | Executed result / scope |
+## Mac application
+
+Open **`dist/SENTINAL.app`** in the development project. The complete V0.3.1 project ZIP includes the same bundle as **`SENTINAL/SENTINAL.app`**, beside the source. It opens the actual PySide desktop without requiring a manually started terminal service.
+
+This arm64 native app uses the existing project `.venv`, source, models and compatible Python framework. Keep the project intact. It is locally ad-hoc signed, with an original icon and explicit camera/local-network purpose text; it is not a portable standalone installer or Apple-notarized distribution. No private stores, models or environment copies were embedded in the small native bundle. [Full app instructions](docs/MACOS_APP.md).
+
+## Executed checks
+
+| Check | Actual result and scope |
 | --- | --- |
-| Real moving-weapon pipeline |17checks passed: genuine prerecorded movement → actual trained model → temporal incident → signed HTTP on explicit loopback → private API → two cookie sessions → acknowledge/dismiss/audit → database reopen/resource release. `edge-real-inference.json`. |
-| Fire and smoke integration |18checks passed each over actual certificate-verified HTTPS, including untrusted-certificate rejection. Real photographs repeated as video; no natural-motion accuracy claim. `edge-fire-https.json`, `edge-smoke-https.json`. |
-| Actual Chrome local UI |26checks passed: desktop1440px/mobile390px layouts, real newly received inference alert, actual timestamped annotated preview, two-session review consistency, viewer403, retention persistence, private-cache exclusion, logout and account-switch races. No runtime JS errors. `web-browser.json`. |
-| Native macOS V0.3 entry |8checks passed: actual visible application, version, explicit Start, recording/audio/evidence off, clean exit. `native-launcher.json`. |
-| Edge focused regressions |41passed4.81s, including malformed credentials, endpoint preservation, signing, retries, queue binding, explicit selection and preview controls. Final full suite includes these tests. |
-| Release/source export |48focused tests passed3.66s before final packaging: private-data exclusions, required source paths, model/fixture hashes and Git source snapshot constraints. |
-| Prior physical camera and RTSP acceptance |V0.2.1 recorded14Mac checks and37native two-loopback-RTSP wall checks. Not rerun as new V0.3 hardware acceptance; see preserved V0.2.1 report. iPhone was not enumerated then; physical CCTV was unavailable. |
+| Full Python regression |**599 passed,0failed/skipped,83.44s**, including existing Vision Core, connected services, release policy, new native-build boundaries and incremental Git tests. `docs/evidence/v031-2026-11-04/pytest-final.txt`. |
+| Actual native app |**22checks passed** through LaunchServices/Cocoa: correct identity/version, real spawned child through `.venv/bin/python`, no recursive GUI, deliberate Start, genuine moving-video inference, actual possible-handgun box/score/temporal alert, Stop/source release and accepted normal macOS Quit. Camera, recording, sound and outbound delivery stayed off. `native-app.json` and public-only `native-app-video.png` in the same folder. |
+| Hosted callback/recovery |**18checks passed**: public CTA, actual owner callback and incident access, URL-token removal/storage, actual owner identity, mobile layout, invalid-session private-screen protection, retry, switch-account and old-link recovery; no uncaught page errors. `docs/evidence/v03-access-app-2026-11-04/base44-access-browser.json`. |
+| First native sign-in |Fresh browser reached the actual Google email sign-in page through the supported provider route; no passwords or consent were automated. The owner's own successful sign-in confirmation is separate evidence. `base44-native-signin-current.json` and `user-access-confirmation.json`. |
+| Frontend security/unit tests |**21passed,0failed/skipped**; actual build/publication output retained in the access evidence folder. These component checks do not replace the live sign-in/user confirmation. |
+| Release/app boundaries |**41focused tests passed1.85s**, including existing public asset policy, native-file whitelist, stale bootstrap/symlink/private-file rejection and build output boundaries. `docs/evidence/v031-2026-11-04/app-package-tests.txt`. |
+| Incremental Git safety |**23focused tests passed13.79s**, including real isolated bare-Git transport, exact parent chain, unchanged working HEAD/index/user files, concurrent-ref protection, source/remote drift rejection and non-force fast-forward/readback. `git-update-tests.txt` in the same folder. |
 
-Local browser evidence uses isolated QA accounts and licensed public footage, never private camera pixels. Chrome mobile emulation is not a physical Android/iOS/Windows test. Fire/smoke HTTPS checks use a process-local test CA and do not alter system trust. Component fakes test logic and are not offered as model or hardware proof.
+Earlier failed compile/link, Quit transport and browser readiness/display-name assertions are preserved separately. The initial Quit harness received a nonzero AppleScript transport result despite the app's normal clean exit; the accepted final normal-quit request was checked explicitly. Browser tests were corrected to wait for the actual state and validate identity through authenticated User/me, rather than expecting an email in a display-name label. No unsuccessful run was relabelled as passing.
 
-Development failures are preserved: the first mobile browser harness waited for a deliberately hidden connection label, then was corrected. A later resumed browser attempt found the prior QA service stopped; it failed with connection refused, and passed after the isolated service was restarted. Earlier failures remain in the evidence directory and are not relabelled as passes.
+The native test used only the attributed public-domain moving-range fixture; it saved no private camera image and enabled no network delivery. The actual model score was0.60619, model revision `ab6f53c8d18d77d799fa70a46adea646d7bb4499`. The inherited sleeve/person misclassification remains visible; this package does not improve model accuracy.
 
-## Models and measured behavior
+## Limits and preserved evidence
 
-Actual locally executed models remain [GingerBrains YOLOv8s weapons](https://github.com/GingerBrains/object-detection/tree/ab6f53c8d18d77d799fa70a46adea646d7bb4499), pinned GPL-3.0 provenance, and [luminous0219 YOLOv8n fire/smoke](https://github.com/luminous0219/fire-and-smoke-detection-yolov8/tree/c30923f568d915a53fcf85989be9fe5d4e030518), AGPL-3.0 provenance, plus the ordinary Ultralytics detector. Exact classes, hashes and licenses are in `docs/MODEL_MANIFEST_V02.md` and `models/v02/MODEL_MANIFEST.json`. The searchable catalog does not establish accuracy for all labels.
+- Native app camera permissions under its new identity, physical iPhone/CCTV and another-Mac installation remain separate on-device checks. No camera was opened during the new native acceptance run.
+- The app is built for the current development runtime. Rebuild from source for another compatible environment; moving only the bundle does not install dependencies or models.
+- Hosted CCTV video, compiled Windows/mobile packages, external notifications, unattended-item/GHS modules and certified safety reliability remain unimplemented/unverified.
+- Weapon/knife/fire/smoke false positives and misses are unchanged. The retained24-scene study is not independent field validation; toy-versus-real and loose-blade recognition remain unreliable. See `docs/DETECTION_RELIABILITY_V021.md`.
+- The prior actual real-inference HTTP/HTTPS/cloud-to-review results and measured performance remain in [V0.3.0 verification](docs/verification/V0.3.0-VERIFICATION_REPORT.md). They are not recast as new hardware or accuracy tests.
 
-The actual moving-weapon edge run processed300frames/50hazard samples in11.42s, observed26.28processedFPS, mean inference29.36ms and temporal alert latency400.4ms on MPS. This is one paced recorded-clip integration run, not a guaranteed camera/cloud throughput figure. It excludes any claim about new physical multi-camera performance. Model/shape cold load, sample interval and engineering concurrency affect results. See the report JSON for precise timings and queue counters.
-
-No new independent accuracy benchmark or model training was completed by the web integration. The retained V0.2.1 study contains24selected scenes/1,140actual forward passes and substantial false positives/misses; approximate single-annotator labels and no proven train/test independence prevent field generalization. At640/0.25 scene fire scoring was2TP/3FP/0FN, smoke1TP/3FP/1FN; object-IoU scores were worse. Default0.60alert score missed the selected fire/smoke positives. A toy gun triggered the weapon model. Knife/blade/spoon/scissors support remains inconsistent. See `docs/DETECTION_RELIABILITY_V021.md`. Temporal rules cannot recover absent predictions or rule out persistent lookalikes.
-
-## Remaining limits
-
-- Not certified fire/security equipment and not production/field accepted. No perfect tracking, reliable loose-blade detector, toy-versus-real distinction, criminal-intent inference or consequential automated response.
-- No hosted CCTV video gateway, mobile push, external recipient, unattended-bag rules, GHS detector, facial identification or compiled Windows/mobile application.
-- Physical iPhone/CCTV and Windows/Android/iOS acceptance remain outstanding. ONNX/CoreML execution is unimplemented; actual CPU/MPS evidence is retained from prior model verification.
-- The local backend is a bounded prototype, with owner-only plaintext stores and hashed credentials; audit is not tamper-proof. Hosted Base44 data is limited to one organization and bounded history.
-- Existing Drive link sharing is preserved at the user's explicit request. Only sanitized distributable artifacts may be uploaded; runtime secrets and private footage must remain excluded.
-
-## Launch and demonstration
-
-Double-click `launch.command` for the desktop, `demo.command` for the selected genuine moving-weapon clip, or `web.command` for the local website/dashboard. First local web launch creates your chosen administrator credentials. The desktop connection dialog loads the intended local or Base44 pairing file; enable delivery and Start separately. Read `HACKATHON_DEMO.md`, `docs/CONNECTED_V03.md`, `docs/EDGE_V03.md` and `docs/API_V03.md`.
-
-## Hosted Base44 vertical slice — executed
-
-Public website: [SENTINAL](https://sentinal-command-center-df4fc282.base44.app). Native-authenticated private dashboard: [Command center](https://sentinal-command-center-df4fc282.base44.app/app.html). Actual app ID6aea0ba86746c1a3df4fc282. Both functions and the freshly built Vite8.3.5 / SDK0.8.40 site were deployed through the official project-local CLI; authenticated owner identity was verified. No new paid plan, public camera gateway or native mobile build is claimed.
-
-- **24 actual hosted Chrome checks passed** at desktop and390px mobile widths: public landing, anonymous sign-in/hidden workspace, same authorized native app identity in two isolated contexts, actual real-model incidents, pinned score/version, acknowledge/dismiss with persistence and cross-context review, native membership/device controls, reload/logout and no uncaught page errors. These contexts use an actual app-scoped credential obtained through the official CLI exchange; they do not establish a fresh Google login or physical mobile acceptance. `base44-hosted-browser.json`.
-- **9 actual authority checks passed**: native owner identity, ordinary direct entity access denied, anonymous command401, correct empty initial state, and two concurrent provider compare-and-set writes with exactly one winner. Initial authority was empty; no fabricated operational records were created. `base44-authority.json`.
-- **3 actual replay/idempotency checks passed** using an already delivered genuine alert: same event/fresh nonce acknowledged once, reused nonce rejected, changed body with same event ID rejected. `base44-replay.json`.
-- **21 Node protocol/role/bounds/CAS tests passed**, zero failures/skips. These pure/component checks are separate from real hosted acceptance. `base44-node-tests.txt`.
-- The actual moving-weapon edge run processed722frames/121hazard samples over25.5s, created2candidates/2possible alerts and delivered14metadata envelopes, with0pending/failed. Measured mean inference27.12ms and observed28.31processingFPS on MPS; these are edge processing measurements, not cloud-screen FPS or a measured cloud end-to-end latency. `base44-edge-weapon.json`. A later short actual inference run supplied a fresh incident for the final browser review test. No pixels or evidence were uploaded.
-
-Two initial hosted browser harnesses failed: one status wait matched a fresh audit entry while the mobile record was stale; the backend correctly rejected the stale review version. The second checked camera text before navigation finished. Both failed JSON reports are preserved; explicit status/action/navigation waits passed without changing production review behavior. Public screenshots were visually inspected. **4 read-only post-review checks also passed**, confirming persisted actor/timestamps, version3 and actual rendered acknowledgment/dismissal audit entries (`base44-post-review.json`).
-
-The final release export regressions passed48tests in4.53s after private/provider-link exclusion changes. Git publication uses a source-only feature commit parented to the verified remote main, preserving the existing local working HEAD/index and oversized historical assets. Source publication, PR and Drive checksum/readback identifiers are recorded in the companion `delivery-manifest.json`, distributed alongside the archive. Existing Drive sharing is preserved. **The tested vertical slice is delivered as a prototype; remaining field/device/video/accuracy requirements above are not declared complete.**
+Exact appended Git commit, package checksums and Drive readbacks are recorded in the V0.3.1 delivery manifest/receipt beside the release. The prior V0.3.0 archive is preserved. Private configuration, accounts, recordings, operational databases and caches remain excluded from source and distribution.

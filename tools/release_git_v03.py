@@ -174,18 +174,29 @@ def snapshot_entries(root: Path, files: list[Path]) -> list[dict]:
             for path in files]
 
 
-def prepare(root: Path, branch: str, parent: str, message: str) -> dict:
-    root = root.resolve()
+def authorized_origin(root: Path):
+    remote_url = git(root, 'remote', 'get-url', 'origin').decode().strip()
+    if remote_url not in {REPOSITORY, REPOSITORY.removesuffix('.git'), 'git@github.com:Bhupesh2821/Project_Sentinal.git'}:
+        raise ValueError('Origin is not the authorized project repository')
+
+
+def remote_heads(root: Path, feature_ref: str) -> dict[str, str]:
+    raw = authenticated_git(root, 'ls-remote', '--heads', 'origin', 'refs/heads/main', feature_ref).decode().splitlines()
+    return dict(line.split('\t')[::-1] for line in raw if '\t' in line)
+
+
+def feature_ref(root: Path, branch: str) -> str:
     git(root, 'check-ref-format', '--branch', branch)
     if branch in {'main', 'master'}:
-        raise ValueError('Prepare a dedicated feature branch')
-    ref = 'refs/heads/' + branch
-    current_refs = git(root, 'for-each-ref', '--format=%(refname)').decode().splitlines()
-    if ref in current_refs:
-        raise ValueError('Feature branch already exists; choose a new branch name')
-    if parent != REMOTE_MAIN:
-        raise ValueError('Use fetched origin/main as the only snapshot parent')
-    parent_sha = git(root, 'rev-parse', '--verify', parent + '^{commit}').decode().strip()
+        raise ValueError('Use a dedicated feature branch')
+    return 'refs/heads/' + branch
+
+
+def create_snapshot(root: Path, branch: str, parent_sha: str, message: str, expected_ref: str = '') -> dict:
+    """Create a complete reviewed tree, then atomically move only its feature ref."""
+    ref = feature_ref(root, branch)
+    if git(root, 'rev-parse', '--symbolic-full-name', 'HEAD').decode().strip() == ref:
+        raise ValueError('The publication branch is checked out; preserve the active working branch')
     original_head = git(root, 'rev-parse', 'HEAD').decode().strip()
     index = root / '.git/index'
     before_index = digest(index.read_bytes()) if index.exists() else None
@@ -215,7 +226,14 @@ def prepare(root: Path, branch: str, parent: str, message: str) -> dict:
         commit_env = {**os.environ, 'GIT_AUTHOR_NAME': AUTHOR_NAME, 'GIT_AUTHOR_EMAIL': AUTHOR_EMAIL,
                       'GIT_COMMITTER_NAME': AUTHOR_NAME, 'GIT_COMMITTER_EMAIL': AUTHOR_EMAIL}
         commit = git(root, 'commit-tree', tree, '-p', parent_sha, data=(message.rstrip() + '\n').encode(), env=commit_env).decode().strip()
-        git(root, 'update-ref', ref, commit, '')
+        verify_commit_snapshot(root, commit, entries)
+        if git(root, 'rev-parse', 'HEAD').decode().strip() != original_head:
+            raise RuntimeError('Active working branch changed during snapshot preparation')
+        if (digest(index.read_bytes()) if index.exists() else None) != before_index:
+            raise RuntimeError('Working index changed during snapshot preparation')
+        # Empty expected_ref creates a new ref; an update requires the exact
+        # previously published SHA. A concurrent local ref change is rejected.
+        git(root, 'update-ref', ref, commit, expected_ref)
     finally:
         temporary_index.unlink(missing_ok=True)
         temporary_index.with_suffix(temporary_index.suffix + '.lock').unlink(missing_ok=True)
@@ -227,6 +245,43 @@ def prepare(root: Path, branch: str, parent: str, message: str) -> dict:
             'branch': branch, 'commit': commit, 'parent': parent_sha, 'tree': tree,
             'local_working_head_preserved': original_head, 'index_unchanged': True,
             'files': entries, 'bytes': sum(entry['bytes'] for entry in entries), 'pushed': False}
+
+
+def prepare(root: Path, branch: str, parent: str, message: str) -> dict:
+    root = root.resolve()
+    ref = feature_ref(root, branch)
+    current_refs = git(root, 'for-each-ref', '--format=%(refname)').decode().splitlines()
+    if ref in current_refs:
+        raise ValueError('Feature branch already exists; choose a new branch name')
+    if parent != REMOTE_MAIN:
+        raise ValueError('Use fetched origin/main as the only snapshot parent')
+    parent_sha = git(root, 'rev-parse', '--verify', parent + '^{commit}').decode().strip()
+    return {**create_snapshot(root, branch, parent_sha, message), 'mode': 'initial_snapshot', 'base_main': parent_sha}
+
+
+def update(root: Path, previous: dict, message: str) -> dict:
+    """Append to the exact published source branch without touching HEAD/index."""
+    root = root.resolve()
+    if (previous.get('repository') != REPOSITORY or not previous.get('index_unchanged')
+            or previous.get('pushed') is not True
+            or previous.get('verified_remote_commit') != previous.get('commit')):
+        raise ValueError('An update requires the verified previously published snapshot report')
+    branch = previous['branch']
+    ref = feature_ref(root, branch)
+    old = previous['commit']
+    if git(root, 'rev-parse', '--verify', ref + '^{commit}').decode().strip() != old:
+        raise ValueError('Local feature branch changed since the previous published snapshot')
+    verify_commit_snapshot(root, old, previous['files'])
+    base_main = previous.get('base_main', previous['parent'])
+    authorized_origin(root)
+    remote = remote_heads(root, ref)
+    if remote.get(ref) != old:
+        raise ValueError('Remote feature branch changed; compare its work before updating')
+    if remote.get('refs/heads/main') != base_main:
+        raise ValueError('Remote main changed; compare it before updating the source snapshot')
+    result = create_snapshot(root, branch, old, message, expected_ref=old)
+    return {**result, 'mode': 'incremental_snapshot', 'base_main': base_main,
+            'previous_published_commit': old, 'remote_feature_before': old}
 
 
 def verify_commit_snapshot(root: Path, commit: str, entries: list[dict]):
@@ -251,12 +306,9 @@ def verify_commit_snapshot(root: Path, commit: str, entries: list[dict]):
 def push(root: Path, report: dict) -> dict:
     if report.get('repository') != REPOSITORY or not report.get('index_unchanged'):
         raise ValueError('Use the verified source snapshot report')
-    remote_url = git(root, 'remote', 'get-url', 'origin').decode().strip()
-    if remote_url not in {REPOSITORY, REPOSITORY.removesuffix('.git'), 'git@github.com:Bhupesh2821/Project_Sentinal.git'}:
-        raise ValueError('Origin is not the authorized project repository')
+    authorized_origin(root)
     branch = report['branch']
-    git(root, 'check-ref-format', '--branch', branch)
-    ref = 'refs/heads/' + branch
+    ref = feature_ref(root, branch)
     commit = git(root, 'rev-parse', '--verify', ref).decode().strip()
     if commit != report['commit']:
         raise ValueError('Feature branch no longer matches its prepared report')
@@ -267,11 +319,18 @@ def push(root: Path, report: dict) -> dict:
     if current != report['files']:
         raise ValueError('Source changed since snapshot; prepare a new reviewed branch')
     verify_commit_snapshot(root, commit, current)
-    remote = authenticated_git(root, 'ls-remote', '--heads', 'origin', 'refs/heads/main', ref).decode().splitlines()
-    remote_refs = dict(line.split('\t')[::-1] for line in remote if '\t' in line)
-    if remote_refs.get('refs/heads/main') != report['parent']:
+    remote_refs = remote_heads(root, ref)
+    if remote_refs.get('refs/heads/main') != report.get('base_main', report['parent']):
         raise ValueError('Remote main changed; compare it before preparing a new snapshot')
-    if ref in remote_refs and remote_refs[ref] != commit:
+    if report.get('mode') == 'incremental_snapshot':
+        previous = report.get('previous_published_commit')
+        if previous != report['parent'] or report.get('remote_feature_before') != previous:
+            raise ValueError('Incremental snapshot does not identify its exact published parent')
+        if remote_refs.get(ref) not in {previous, commit}:
+            raise ValueError('Remote feature branch changed; no overwrite allowed')
+        if git(root, 'merge-base', '--is-ancestor', previous, commit) != b'':
+            raise ValueError('Incremental publication must be a fast-forward')
+    elif ref in remote_refs and remote_refs[ref] != commit:
         raise ValueError('Remote feature branch exists with other work; no overwrite allowed')
     authenticated_git(root, 'push', '--porcelain', 'origin', ref + ':' + ref)
     verified = authenticated_git(root, 'ls-remote', '--heads', 'origin', ref).decode().split()
@@ -285,16 +344,28 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument('--prepare', action='store_true', help='Create a new source-only feature commit, without publishing')
+    mode.add_argument('--update', action='store_true', help='Append a source-only commit to the exact previously published feature branch')
     mode.add_argument('--push', action='store_true', help='Explicitly publish the already prepared source snapshot')
     parser.add_argument('--branch', default=DEFAULT_BRANCH)
     parser.add_argument('--parent', default=REMOTE_MAIN)
     parser.add_argument('--message', default='feat(v0.3): connect local AI events to an authenticated command center')
-    parser.add_argument('--report', default='docs/evidence/v03-2026-11-03/github-source-snapshot.json')
+    parser.add_argument('--previous-report', help='Verified published snapshot report required for --update')
+    parser.add_argument('--report', help='Project-local output report; --update requires a new report path')
     args = parser.parse_args()
-    report_path = (ROOT / args.report).resolve()
+    report_name = args.report or ('docs/evidence/v03-access-app-2026-11-04/github-source-snapshot.json' if args.update else 'docs/evidence/v03-2026-11-03/github-source-snapshot.json')
+    report_path = (ROOT / report_name).resolve()
     if not report_path.is_relative_to(ROOT):
         raise ValueError('Snapshot reports must remain inside the project')
-    if args.push:
+    if (args.prepare or args.update) and report_path.exists():
+        raise ValueError('Snapshot report already exists; preserve it and choose a new report path')
+    if args.update:
+        if not args.previous_report:
+            raise ValueError('--update requires --previous-report from the verified published milestone')
+        previous_path = (ROOT / args.previous_report).resolve()
+        if not previous_path.is_relative_to(ROOT):
+            raise ValueError('Previous snapshot report must remain inside the project')
+        report = update(ROOT, json.loads(previous_path.read_text()), args.message)
+    elif args.push:
         report = push(ROOT, json.loads(report_path.read_text()))
     elif args.prepare:
         report = prepare(ROOT, args.branch, args.parent, args.message)

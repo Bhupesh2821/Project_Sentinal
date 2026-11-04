@@ -11,7 +11,7 @@ These URLs were published and exercised in actual Chrome on November 4, 2026. Th
 
 ## Sign in and provision access
 
-Open the dashboard and select **Sign in with Base44**. The verified app owner has administrator access. Other authenticated native Base44 accounts have no SENTINAL access until an administrator grants their email an enabled `admin`, `operator`, or `viewer` membership through Administration. This form does not collect Base44 passwords or automatically send invitations. Users sign in through Base44 separately. Viewers can read; operators can review; administrators manage memberships, device credentials and retention. Direct entity reads/writes are denied by entity rules; authorized operations pass through backend functions and native account membership checks.
+Open the dashboard and select **Continue with Google**. The verified app owner has administrator access. Other authenticated native Base44 accounts have no SENTINAL access until an administrator grants their email an enabled `admin`, `operator`, or `viewer` membership through Administration. This form does not collect Base44 passwords or automatically send invitations. Users sign in through Base44 separately. Viewers can read; operators can review; administrators manage memberships, device credentials and retention. Direct entity reads/writes are denied by entity rules; authorized operations pass through backend functions and native account membership checks.
 
 In Administration, register an authorized edge device. Its generated secret is returned once. Keep it in a private local configuration file, never Git, Drive snapshots, browser URLs or screenshots. Device registration does not start cameras. Explicitly start the selected authorized source in the desktop application or monitor command. Camera IDs are scoped to the paired device. Disable a device to reject new signed requests.
 
@@ -19,7 +19,7 @@ A private edge configuration uses the published HTTPS origin, its device ID and 
 
 ## Actual demonstration
 
-1. Open the public website, then the private dashboard and sign in.
+1. Open the public website, then the private dashboard, select **Continue with Google**, and choose your authorized account.
 2. Pair the authorized Mac edge device, storing its configuration only under `config/connected/` with owner-only access.
 3. Start the installed detector against the legally sourced moving weapon fixture, or explicitly select an authorized live source. The prerecorded fallback is `data/v02-demo/weapon_range_motion.mp4`.
 4. Observe actual possible-weapon incidents, scores, model version and camera ID in Incident Center. No footage is uploaded by this cloud connector.
@@ -98,3 +98,20 @@ Reproducible helpers: `frontend/command-center/tests/remote-authority.mjs`, `fro
 Earlier platform-domain authority failure and two browser harness failures (an optimistic review-version conflict and navigation-readiness wait) are retained under `base44-authority-platform-initial.json` and `base44-hosted-browser-initial-*.json`. The final passing run followed corrected test readiness checks; these failures were not silently relabeled as successes. Existing desktop/camera/fire/smoke tests are documented in the main V0.3 verification report and are separate from this cloud scope.
 
 Official references: [Base44 developer documentation](https://docs.base44.com/), [Base44 CLI package](https://www.npmjs.com/package/base44), [Base44 SDK](https://www.npmjs.com/package/@base44/sdk), [Vite releases](https://github.com/vitejs/vite/releases). Model sources and licenses remain in the project model manifest.
+
+
+## V0.3.1 access correction — November 4, 2026
+
+The owner reported that the public website opened but the dashboard sign-in failed. A fresh browser reproduced the defect: `redirectToLogin()` navigated to `/login`, which this static hosting deployment served as the public landing page. The earlier valid-token browser checks did not cover this fresh sign-in path. This has been corrected using the officially supported `base44.auth.loginWithProvider('google', returnURL)` entry. The application owner subsequently confirmed that the dashboard opens through Google using the authorized professional account. No account memberships, entity rules or incident data were changed.
+
+A fast initial click could also occur before the frontend module attached its handler. Sign-in and retry buttons now start disabled and become usable when the handlers are ready. Existing `/login` bookmarks recover to `/app.html`. Expired/invalid sessions, permission failures and service/network failures show actionable feedback; retry and sign-out/account-switch controls are available rather than silently returning to a blank login state. The callback continues to consume the native Base44 token and remove it from the browser address.
+
+Fresh evidence is under `docs/evidence/v03-access-app-2026-11-04/`: successful production build, 21 passing security/unit checks, publication output, the reproduced old-route failure, Google's actual visible sign-in page, and `base44-access-browser.json` for the final callback/mobile/session-recovery outcome. Earlier unsuccessful Google load/readiness attempts are retained as `base44-access-browser-*-initial.json`; the later independent callback-only run explicitly declares that Google consent is not being automated. Native consent completion is supported by the owner's confirmation, not a fabricated automated login claim.
+
+Repeat the bounded callback/recovery check from the project root with the already authorized private app-token configuration:
+
+```sh
+node frontend/command-center/tests/access-browser.mjs --callback-only
+```
+
+Omit `--callback-only` to additionally navigate a fresh browser to Google's sign-in page; it does not enter passwords or approve consent. Google may apply independent browser/identity-provider checks. See the [official Base44 authentication SDK reference](https://docs.base44.com/developers/references/sdk/docs/interfaces/auth#loginwithprovider).

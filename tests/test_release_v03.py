@@ -65,3 +65,36 @@ def test_v03_frontend_external_symlink_cannot_enter_archive(root,tmp_path):
     (frontend/'linked-directory').symlink_to(tmp_path,target_is_directory=True)
     included=tool().collect_release_files(root)
     assert not any(path.is_symlink() or 'linked-directory' in path.parts for path in included)
+
+
+
+def native_fixture(root):
+    import plistlib
+    module=tool();bundle=root/'dist/SENTINAL.app'
+    for name in module.NATIVE_APP_FILES:write(root,'dist/SENTINAL.app/'+name,b'policy test data, not an executable or signature')
+    write(root,'tools/macos/bootstrap.py',b'# reviewed bootstrap')
+    (bundle/'Contents/Resources/bootstrap.py').write_bytes(b'# reviewed bootstrap')
+    (bundle/'Contents/Info.plist').write_bytes(plistlib.dumps({'CFBundleExecutable':'SENTINAL','CFBundleShortVersionString':module.__version__,'NSCameraUsageDescription':'Only on explicit Start'}))
+    return module,bundle
+
+
+def test_native_package_maps_only_reviewed_bundle_without_dist_runtime(root):
+    module,bundle=native_fixture(root)
+    entries=module.native_app_entries(root)
+    assert len(entries)==len(module.NATIVE_APP_FILES)
+    assert all(str(target).startswith('SENTINAL/SENTINAL.app/Contents/') for _,target in entries)
+    assert all('dist' not in target.parts for _,target in entries)
+
+
+def test_native_package_rejects_unreviewed_private_file(root):
+    module,bundle=native_fixture(root)
+    (bundle/'Contents/Resources/credentials.json').write_text('private sentinel')
+    with pytest.raises(ValueError,match='Unreviewed'):module.native_app_entries(root)
+
+
+def test_native_package_rejects_stale_bootstrap_and_external_link(root):
+    module,bundle=native_fixture(root)
+    script=bundle/'Contents/Resources/bootstrap.py';script.write_text('# old startup')
+    with pytest.raises(ValueError,match='differs'):module.native_app_entries(root)
+    script.unlink();script.symlink_to(root/'tools/macos/bootstrap.py')
+    with pytest.raises(ValueError,match='symlink'):module.native_app_entries(root)

@@ -1,4 +1,4 @@
-const CACHE='sentinal-base44-public-v03-1';
+const CACHE='sentinal-base44-public-v03-auth2';
 const PUBLIC=['/','/styles.css','/public.js','/icon.svg','/manifest.webmanifest','/offline.html'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(PUBLIC))));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('sentinal-public-')&&key!==CACHE).map(key=>caches.delete(key))))));

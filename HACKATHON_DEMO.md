@@ -1,4 +1,6 @@
-# SENTINAL V0.3 hackathon demonstration — November 4, 2026
+# SENTINAL V0.3.1 hackathon demonstration — November 4, 2026
+
+For the Mac application, open `dist/SENTINAL.app` (or the `SENTINAL.app` beside the packaged source). It starts idle; use its video/source controls and Start. The `demo.command` preset remains available. For the hosted dashboard, select **Continue with Google**; the initial provider route was corrected in V0.3.1.
 
 Use actual model outputs and describe every observation as possible. The demo is a prototype; missed detections and false positives remain. The included silent moving-weapon clip is public-domain range footage; it does not involve opening a camera or handling a weapon.
 

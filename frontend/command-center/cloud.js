@@ -1,8 +1,9 @@
 import {createClient,getAccessToken} from '@base44/sdk';
 export const base44=createClient({appId:'6aea0ba86746c1a3df4fc282',token:getAccessToken(),serverUrl:window.location.origin,appBaseUrl:window.location.origin,requiresAuth:false});
-export function signIn(){base44.auth.redirectToLogin(window.location.origin+'/app.html');}
-export function signOut(){base44.auth.logout();}
-export async function command(action,data={}){try{const response=await base44.functions.invoke('command',{action,data});return response.data;}catch(cause){const error=new Error(cause?.response?.data?.error||cause?.data?.error||cause?.message||'The authenticated cloud service could not complete this request');error.status=cause?.status||cause?.response?.status||500;if(error.status===401)window.dispatchEvent(new Event('sentinal-session-expired'));throw error;}}
+export function signIn(){base44.auth.loginWithProvider('google',window.location.origin+'/app.html');}
+export function signOut(){base44.auth.logout(window.location.origin+'/app.html');}
+export function hasSessionToken(){return Boolean(getAccessToken());}
+export async function command(action,data={}){try{const response=await base44.functions.invoke('command',{action,data});return response.data;}catch(cause){const error=new Error(cause?.response?.data?.error||cause?.data?.error||cause?.message||'The authenticated cloud service could not complete this request');error.status=cause?.status||cause?.response?.status||500;if(error.status===401&&action!=='session')window.dispatchEvent(new Event('sentinal-session-expired'));throw error;}}
 let batch=null;
 async function workspace(){if(!batch){batch=command('workspace');setTimeout(()=>{batch=null;},100);}return batch;}
 export async function api(path,options={}){const method=options.method||'GET',data=options.body?JSON.parse(options.body):{};
