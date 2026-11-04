@@ -1,0 +1,102 @@
+{
+  "title": "File:Spoon and chopsticks.jpg",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Spoon_and_chopsticks.jpg",
+  "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fc/Spoon_and_chopsticks.jpg/1280px-Spoon_and_chopsticks.jpg",
+  "chosen_license": "CC BY 2.0",
+  "source_metadata": {
+    "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fc/Spoon_and_chopsticks.jpg/1280px-Spoon_and_chopsticks.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "thumbwidth": 1280,
+    "thumbheight": 1925,
+    "responsiveUrls": {
+      "2": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Spoon_and_chopsticks.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+    },
+    "thumbattribs": {
+      "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fc/Spoon_and_chopsticks.jpg/1280px-Spoon_and_chopsticks.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "decoding": "async",
+      "loading": "lazy",
+      "width": 1280,
+      "height": 1925,
+      "srcset": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Spoon_and_chopsticks.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled 2x"
+    },
+    "url": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Spoon_and_chopsticks.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "descriptionurl": "https://commons.wikimedia.org/wiki/File:Spoon_and_chopsticks.jpg",
+    "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=7263521",
+    "extmetadata": {
+      "DateTime": {
+        "value": "2009-07-09 21:09:14",
+        "source": "mediawiki-metadata",
+        "hidden": ""
+      },
+      "ObjectName": {
+        "value": "Spoon and chopsticks",
+        "source": "mediawiki-metadata"
+      },
+      "CommonsMetadataExtension": {
+        "value": 1.2,
+        "source": "extension",
+        "hidden": ""
+      },
+      "Categories": {
+        "value": "Tableware of China|Taken with Nikon D40|Spoon and chopsticks|Spoon and chopstick rests|Flickr images reviewed by FlickreviewR|Silver spoons",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "Assessments": {
+        "value": "",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "ImageDescription": {
+        "value": "Spoon and chopsticks",
+        "source": "commons-desc-page"
+      },
+      "DateTimeOriginal": {
+        "value": "2008-01-30 19:35",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/photos/40135642@N00/2231073530/\">Cutleries</a>",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/people/40135642@N00\">chee.hong</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 2.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "UsageTerms": {
+        "value": "Creative Commons Attribution 2.0",
+        "source": "commons-desc-page"
+      },
+      "AttributionRequired": {
+        "value": "true",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/2.0",
+        "source": "commons-desc-page"
+      },
+      "Copyrighted": {
+        "value": "True",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "License": {
+        "value": "cc-by-2.0",
+        "source": "commons-templates",
+        "hidden": ""
+      }
+    }
+  },
+  "sha256": "ae6476cdafa907d9ce49ba1cba8001cf1b17e161779b321eea95118830660022",
+  "scope": "Selected development photo of reported category, no independent train/test separation claim; no user camera media"
+}

@@ -1,0 +1,700 @@
+{
+  "test": "actual Qt desktop and real YOLO/ByteTrack video pipeline",
+  "mock_inference": false,
+  "camera_access_attempted": false,
+  "display_mode": "offscreen",
+  "requested_device": "auto",
+  "checks": {
+    "desktop_rendered": {
+      "passed": true,
+      "detail": null
+    },
+    "startup_camera_inactive": {
+      "passed": true,
+      "detail": null
+    },
+    "metadata_disabled_at_startup": {
+      "passed": true,
+      "detail": null
+    },
+    "saved_desktop-standby.png": {
+      "passed": true,
+      "detail": null
+    },
+    "real_video_frames_displayed": {
+      "passed": true,
+      "detail": null
+    },
+    "real_detections": {
+      "passed": true,
+      "detail": null
+    },
+    "real_tracking_ids": {
+      "passed": true,
+      "detail": null
+    },
+    "measured_fps_and_latency": {
+      "passed": true,
+      "detail": null
+    },
+    "confidence_control": {
+      "passed": true,
+      "detail": null
+    },
+    "toggle_show_boxes_off": {
+      "passed": true,
+      "detail": null
+    },
+    "toggle_show_boxes_on": {
+      "passed": true,
+      "detail": null
+    },
+    "toggle_show_labels_off": {
+      "passed": true,
+      "detail": null
+    },
+    "toggle_show_labels_on": {
+      "passed": true,
+      "detail": null
+    },
+    "toggle_show_ids_off": {
+      "passed": true,
+      "detail": null
+    },
+    "toggle_show_ids_on": {
+      "passed": true,
+      "detail": null
+    },
+    "optional_metadata_persisted": {
+      "passed": true,
+      "detail": null
+    },
+    "saved_desktop-monitoring.png": {
+      "passed": true,
+      "detail": null
+    },
+    "stop_released_source": {
+      "passed": true,
+      "detail": null
+    },
+    "stop_restored_controls": {
+      "passed": true,
+      "detail": null
+    },
+    "restart_new_session": {
+      "passed": true,
+      "detail": null
+    },
+    "restart_reused_model_pipeline": {
+      "passed": true,
+      "detail": null
+    },
+    "real_short_clip_created": {
+      "passed": true,
+      "detail": null
+    },
+    "source_switch_opened_other_video": {
+      "passed": true,
+      "detail": null
+    },
+    "eof_releases_source": {
+      "passed": true,
+      "detail": null
+    },
+    "eof_replay_control": {
+      "passed": true,
+      "detail": null
+    },
+    "replay_uses_new_session": {
+      "passed": true,
+      "detail": null
+    },
+    "missing_file_understandable_error": {
+      "passed": true,
+      "detail": null
+    },
+    "failure_releases_source": {
+      "passed": true,
+      "detail": null
+    },
+    "failure_allows_retry": {
+      "passed": true,
+      "detail": null
+    },
+    "saved_desktop-source-error.png": {
+      "passed": true,
+      "detail": null
+    },
+    "recovered_after_missing_file": {
+      "passed": true,
+      "detail": null
+    },
+    "ui_heartbeat_active": {
+      "passed": true,
+      "detail": null
+    },
+    "worker_shutdown": {
+      "passed": true
+    }
+  },
+  "frames": [
+    {
+      "stage": "first_real_video",
+      "session_id": "82d06ce7-2b64-4ade-b68c-d5bcca72d87a",
+      "frame_index": 1,
+      "device": "cpu",
+      "fps": 0.03920263237445854,
+      "vision_ms": 25505.679458001396,
+      "average_vision_ms": 25505.679458001396,
+      "labels": [
+        "person",
+        "person",
+        "car",
+        "person",
+        "truck"
+      ],
+      "track_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "stage": "first_real_video",
+      "session_id": "82d06ce7-2b64-4ade-b68c-d5bcca72d87a",
+      "frame_index": 2,
+      "device": "cpu",
+      "fps": 0.07823130914331947,
+      "vision_ms": 54.78295899229124,
+      "average_vision_ms": 12780.231208496843,
+      "labels": [
+        "person",
+        "person",
+        "car",
+        "person",
+        "truck"
+      ],
+      "track_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "stage": "first_real_video",
+      "session_id": "82d06ce7-2b64-4ade-b68c-d5bcca72d87a",
+      "frame_index": 3,
+      "device": "cpu",
+      "fps": 0.11714061381956725,
+      "vision_ms": 42.917917016893625,
+      "average_vision_ms": 8534.46011133686,
+      "labels": [
+        "person",
+        "person",
+        "car",
+        "person",
+        "truck"
+      ],
+      "track_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "stage": "first_real_video",
+      "session_id": "82d06ce7-2b64-4ade-b68c-d5bcca72d87a",
+      "frame_index": 4,
+      "device": "cpu",
+      "fps": 0.1559177014099771,
+      "vision_ms": 42.59929101681337,
+      "average_vision_ms": 6411.4949062568485,
+      "labels": [
+        "person",
+        "person",
+        "car",
+        "person",
+        "truck"
+      ],
+      "track_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "stage": "first_real_video",
+      "session_id": "82d06ce7-2b64-4ade-b68c-d5bcca72d87a",
+      "frame_index": 5,
+      "device": "cpu",
+      "fps": 0.19458565038631256,
+      "vision_ms": 40.11212498880923,
+      "average_vision_ms": 5137.218350003241,
+      "labels": [
+        "person",
+        "person",
+        "car",
+        "person",
+        "truck"
+      ],
+      "track_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "stage": "first_real_video",
+      "session_id": "82d06ce7-2b64-4ade-b68c-d5bcca72d87a",
+      "frame_index": 6,
+      "device": "cpu",
+      "fps": 0.2331293946531954,
+      "vision_ms": 40.19070800859481,
+      "average_vision_ms": 4287.713743004133,
+      "labels": [
+        "person",
+        "person",
+        "car",
+        "person",
+        "truck"
+      ],
+      "track_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "stage": "first_real_video",
+      "session_id": "82d06ce7-2b64-4ade-b68c-d5bcca72d87a",
+      "frame_index": 7,
+      "device": "cpu",
+      "fps": 0.27152359716436936,
+      "vision_ms": 42.75062499800697,
+      "average_vision_ms": 3681.290440431829,
+      "labels": [
+        "person",
+        "person",
+        "car",
+        "person",
+        "truck"
+      ],
+      "track_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "stage": "first_real_video",
+      "session_id": "82d06ce7-2b64-4ade-b68c-d5bcca72d87a",
+      "frame_index": 8,
+      "device": "cpu",
+      "fps": 0.3098088292670628,
+      "vision_ms": 41.232457995647565,
+      "average_vision_ms": 3226.2831926273066,
+      "labels": [
+        "person",
+        "person",
+        "car",
+        "person",
+        "truck"
+      ],
+      "track_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "stage": "first_stop",
+      "session_id": "82d06ce7-2b64-4ade-b68c-d5bcca72d87a",
+      "frame_index": 9,
+      "device": "cpu",
+      "fps": 0.34746292162491277,
+      "vision_ms": 78.95979200839065,
+      "average_vision_ms": 2876.5805925585382,
+      "labels": [
+        "person",
+        "person",
+        "person"
+      ],
+      "track_ids": [
+        1,
+        2,
+        4
+      ]
+    },
+    {
+      "stage": "restart_real_video",
+      "session_id": "da4d5294-0652-459b-94d5-9c0f1fa03661",
+      "frame_index": 1,
+      "device": "cpu",
+      "fps": 25.498360356119104,
+      "vision_ms": 37.08224999718368,
+      "average_vision_ms": 37.08224999718368,
+      "labels": [
+        "person",
+        "person",
+        "person"
+      ],
+      "track_ids": [
+        1,
+        2,
+        4
+      ]
+    },
+    {
+      "stage": "restart_real_video",
+      "session_id": "da4d5294-0652-459b-94d5-9c0f1fa03661",
+      "frame_index": 2,
+      "device": "cpu",
+      "fps": 22.907550467263018,
+      "vision_ms": 46.81345901917666,
+      "average_vision_ms": 41.94785450818017,
+      "labels": [
+        "person",
+        "person",
+        "person"
+      ],
+      "track_ids": [
+        1,
+        2,
+        4
+      ]
+    },
+    {
+      "stage": "restart_real_video",
+      "session_id": "da4d5294-0652-459b-94d5-9c0f1fa03661",
+      "frame_index": 3,
+      "device": "cpu",
+      "fps": 21.904665581138428,
+      "vision_ms": 47.65849999967031,
+      "average_vision_ms": 43.85140300534355,
+      "labels": [
+        "person",
+        "person",
+        "person"
+      ],
+      "track_ids": [
+        1,
+        2,
+        4
+      ]
+    },
+    {
+      "stage": "restart_real_video",
+      "session_id": "da4d5294-0652-459b-94d5-9c0f1fa03661",
+      "frame_index": 4,
+      "device": "cpu",
+      "fps": 22.08145820315057,
+      "vision_ms": 42.562374990666285,
+      "average_vision_ms": 43.529146001674235,
+      "labels": [
+        "person",
+        "person",
+        "person"
+      ],
+      "track_ids": [
+        1,
+        2,
+        4
+      ]
+    },
+    {
+      "stage": "source_switch_and_eof",
+      "session_id": "bdfb5d61-9b2b-4f64-97dd-483c5b4a6957",
+      "frame_index": 1,
+      "device": "cpu",
+      "fps": 22.362964289434416,
+      "vision_ms": 42.88424999685958,
+      "average_vision_ms": 42.88424999685958,
+      "labels": [
+        "person",
+        "person",
+        "person"
+      ],
+      "track_ids": [
+        1,
+        2,
+        5
+      ]
+    },
+    {
+      "stage": "source_switch_and_eof",
+      "session_id": "bdfb5d61-9b2b-4f64-97dd-483c5b4a6957",
+      "frame_index": 2,
+      "device": "cpu",
+      "fps": 22.094829329086643,
+      "vision_ms": 43.892209010664374,
+      "average_vision_ms": 43.38822950376198,
+      "labels": [
+        "person",
+        "person",
+        "person"
+      ],
+      "track_ids": [
+        1,
+        2,
+        5
+      ]
+    },
+    {
+      "stage": "source_switch_and_eof",
+      "session_id": "bdfb5d61-9b2b-4f64-97dd-483c5b4a6957",
+      "frame_index": 3,
+      "device": "cpu",
+      "fps": 21.491280067299094,
+      "vision_ms": 46.88025001087226,
+      "average_vision_ms": 44.5522363394654,
+      "labels": [
+        "person",
+        "person",
+        "person"
+      ],
+      "track_ids": [
+        1,
+        2,
+        5
+      ]
+    },
+    {
+      "stage": "source_switch_and_eof",
+      "session_id": "bdfb5d61-9b2b-4f64-97dd-483c5b4a6957",
+      "frame_index": 4,
+      "device": "cpu",
+      "fps": 21.945937139349184,
+      "vision_ms": 40.39166701841168,
+      "average_vision_ms": 43.512094009201974,
+      "labels": [
+        "person",
+        "person",
+        "person"
+      ],
+      "track_ids": [
+        1,
+        2,
+        5
+      ]
+    },
+    {
+      "stage": "source_switch_and_eof",
+      "session_id": "bdfb5d61-9b2b-4f64-97dd-483c5b4a6957",
+      "frame_index": 5,
+      "device": "cpu",
+      "fps": 21.91800047408588,
+      "vision_ms": 43.64499999792315,
+      "average_vision_ms": 43.53867520694621,
+      "labels": [
+        "person",
+        "person",
+        "person"
+      ],
+      "track_ids": [
+        1,
+        2,
+        5
+      ]
+    },
+    {
+      "stage": "source_switch_and_eof",
+      "session_id": "bdfb5d61-9b2b-4f64-97dd-483c5b4a6957",
+      "frame_index": 6,
+      "device": "cpu",
+      "fps": 21.833736728776625,
+      "vision_ms": 44.44574998342432,
+      "average_vision_ms": 43.689854336359225,
+      "labels": [
+        "person",
+        "person",
+        "person"
+      ],
+      "track_ids": [
+        1,
+        2,
+        5
+      ]
+    },
+    {
+      "stage": "source_switch_and_eof",
+      "session_id": "bdfb5d61-9b2b-4f64-97dd-483c5b4a6957",
+      "frame_index": 7,
+      "device": "cpu",
+      "fps": 21.559199831057196,
+      "vision_ms": 47.57879101089202,
+      "average_vision_ms": 44.245416718435344,
+      "labels": [
+        "person",
+        "person",
+        "person"
+      ],
+      "track_ids": [
+        1,
+        2,
+        5
+      ]
+    },
+    {
+      "stage": "source_switch_and_eof",
+      "session_id": "bdfb5d61-9b2b-4f64-97dd-483c5b4a6957",
+      "frame_index": 8,
+      "device": "cpu",
+      "fps": 21.15711101818292,
+      "vision_ms": 51.09912500483915,
+      "average_vision_ms": 45.10213025423582,
+      "labels": [
+        "person",
+        "person",
+        "person"
+      ],
+      "track_ids": [
+        1,
+        2,
+        5
+      ]
+    },
+    {
+      "stage": "source_switch_and_eof",
+      "session_id": "bdfb5d61-9b2b-4f64-97dd-483c5b4a6957",
+      "frame_index": 9,
+      "device": "cpu",
+      "fps": 21.216344787384614,
+      "vision_ms": 43.77616697456688,
+      "average_vision_ms": 44.95480100093927,
+      "labels": [
+        "person",
+        "person",
+        "person"
+      ],
+      "track_ids": [
+        1,
+        2,
+        5
+      ]
+    },
+    {
+      "stage": "source_switch_and_eof",
+      "session_id": "bdfb5d61-9b2b-4f64-97dd-483c5b4a6957",
+      "frame_index": 10,
+      "device": "cpu",
+      "fps": 21.315148136776322,
+      "vision_ms": 42.676250013755634,
+      "average_vision_ms": 44.726945902220905,
+      "labels": [
+        "person",
+        "person",
+        "person"
+      ],
+      "track_ids": [
+        1,
+        2,
+        5
+      ]
+    },
+    {
+      "stage": "source_switch_and_eof",
+      "session_id": "bdfb5d61-9b2b-4f64-97dd-483c5b4a6957",
+      "frame_index": 11,
+      "device": "cpu",
+      "fps": 21.447248932441948,
+      "vision_ms": 41.528208006639034,
+      "average_vision_ms": 44.4361515480771,
+      "labels": [
+        "person",
+        "person",
+        "person"
+      ],
+      "track_ids": [
+        1,
+        2,
+        5
+      ]
+    },
+    {
+      "stage": "source_switch_and_eof",
+      "session_id": "bdfb5d61-9b2b-4f64-97dd-483c5b4a6957",
+      "frame_index": 12,
+      "device": "cpu",
+      "fps": 21.5811940964717,
+      "vision_ms": 40.77049999614246,
+      "average_vision_ms": 44.13068058541588,
+      "labels": [
+        "person",
+        "person",
+        "person",
+        "person"
+      ],
+      "track_ids": [
+        1,
+        2,
+        5,
+        7
+      ]
+    },
+    {
+      "stage": "replay",
+      "session_id": "9381e39f-c252-44ce-bf76-ff712878cbbd",
+      "frame_index": 1,
+      "device": "cpu",
+      "fps": 22.195669794170172,
+      "vision_ms": 42.99820802407339,
+      "average_vision_ms": 42.99820802407339,
+      "labels": [
+        "person",
+        "person",
+        "person"
+      ],
+      "track_ids": [
+        1,
+        2,
+        5
+      ]
+    },
+    {
+      "stage": "error_recovery",
+      "session_id": "679304fd-79ad-46ae-8c17-8dd46f44a9e1",
+      "frame_index": 1,
+      "device": "cpu",
+      "fps": 20.610447242810636,
+      "vision_ms": 45.94595899106935,
+      "average_vision_ms": 45.94595899106935,
+      "labels": [
+        "person",
+        "person",
+        "person"
+      ],
+      "track_ids": [
+        1,
+        2,
+        5
+      ]
+    }
+  ],
+  "failures": [],
+  "qt_platform": "offscreen",
+  "ui_heartbeat": {
+    "callbacks": 642,
+    "interval_ms": 10,
+    "mean_gap_ms": 47.51702961926628,
+    "maximum_gap_ms": 7569.532082998194,
+    "p95_gap_ms": 18.681957997614518,
+    "note": "Actual Python callbacks while native Qt events and model worker run; includes source/model startup."
+  },
+  "passed": true
+}

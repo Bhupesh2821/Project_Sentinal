@@ -1,0 +1,164 @@
+{
+  "scope": "Seven selected photos, one annotator approximate source-pixel boxes; no independent train/test separation established. Utilityphoto loose spareblade has no dedicated trained label and is separately marked unsupported. Known toy is separate firearm-lookalike, never real-firearmTP.",
+  "scenes": [
+    {
+      "file": "scissors_household.jpg",
+      "ordinary": [
+        {
+          "category": "scissors",
+          "bbox": [
+            55,
+            415,
+            1240,
+            865
+          ]
+        }
+      ],
+      "hazards": []
+    },
+    {
+      "file": "scissors_pair.jpg",
+      "ordinary": [
+        {
+          "category": "scissors",
+          "bbox": [
+            55,
+            48,
+            422,
+            735
+          ]
+        },
+        {
+          "category": "scissors",
+          "bbox": [
+            425,
+            45,
+            806,
+            737
+          ]
+        }
+      ],
+      "hazards": []
+    },
+    {
+      "file": "spoon_small.jpg",
+      "ordinary": [
+        {
+          "category": "spoon",
+          "bbox": [
+            58,
+            397,
+            1222,
+            667
+          ]
+        }
+      ],
+      "hazards": [],
+      "ignored_regions": [
+        {
+          "reason": "unidentifiable partial item at image boundary",
+          "bbox": [
+            295,
+            0,
+            450,
+            65
+          ]
+        }
+      ]
+    },
+    {
+      "file": "spoon_chopsticks.jpg",
+      "ordinary": [
+        {
+          "category": "spoon",
+          "bbox": [
+            0,
+            340,
+            905,
+            1450
+          ]
+        }
+      ],
+      "hazards": []
+    },
+    {
+      "file": "cleaver.jpg",
+      "ordinary": [
+        {
+          "category": "knife",
+          "bbox": [
+            20,
+            72,
+            1225,
+            860
+          ]
+        }
+      ],
+      "hazards": [
+        {
+          "category": "weapon_knife",
+          "bbox": [
+            20,
+            72,
+            1225,
+            860
+          ]
+        }
+      ]
+    },
+    {
+      "file": "utility_blade.jpg",
+      "ordinary": [
+        {
+          "category": "knife",
+          "bbox": [
+            12,
+            215,
+            1235,
+            565
+          ]
+        }
+      ],
+      "hazards": [
+        {
+          "category": "weapon_knife",
+          "bbox": [
+            12,
+            215,
+            1235,
+            565
+          ]
+        }
+      ],
+      "unsupported_targets": [
+        {
+          "category": "loose_blade",
+          "bbox": [
+            205,
+            548,
+            925,
+            955
+          ],
+          "note": "No independently validated loose-blade detector; misses must not be claimed fixed"
+        }
+      ]
+    },
+    {
+      "file": "toy_gun.jpg",
+      "ordinary": [],
+      "hazards": [],
+      "lookalike_targets": [
+        {
+          "category": "known_toy_gun",
+          "bbox": [
+            315,
+            250,
+            1020,
+            835
+          ],
+          "note": "Visualpossibleweapon output can occur; cannot establish actual firearm, not a genuine-weaponTP"
+        }
+      ]
+    }
+  ]
+}

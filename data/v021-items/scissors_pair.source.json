@@ -1,0 +1,82 @@
+{
+  "title": "File:2scissors.jpg",
+  "source_url": "https://commons.wikimedia.org/wiki/File:2scissors.jpg",
+  "download_url": "https://upload.wikimedia.org/wikipedia/commons/9/95/2scissors.jpg",
+  "chosen_license": "CC BY 1.0",
+  "source_metadata": {
+    "thumburl": "https://upload.wikimedia.org/wikipedia/commons/9/95/2scissors.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "thumbwidth": 1280,
+    "thumbheight": 1184,
+    "thumbattribs": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/9/95/2scissors.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "decoding": "async",
+      "loading": "lazy",
+      "width": 1280,
+      "height": 1184
+    },
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/95/2scissors.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "descriptionurl": "https://commons.wikimedia.org/wiki/File:2scissors.jpg",
+    "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=43615",
+    "extmetadata": {
+      "DateTime": {
+        "value": "2005-01-16 10:31:13",
+        "source": "mediawiki-metadata",
+        "hidden": ""
+      },
+      "ObjectName": {
+        "value": "2scissors",
+        "source": "mediawiki-metadata"
+      },
+      "CommonsMetadataExtension": {
+        "value": 1.2,
+        "source": "extension",
+        "hidden": ""
+      },
+      "Categories": {
+        "value": "Files with no machine-readable author|Files with no machine-readable source|Media missing infobox template|Equipment for left-handed people|Plastic craft scissors",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "Assessments": {
+        "value": "",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "LicenseShortName": {
+        "value": "CC BY 1.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "UsageTerms": {
+        "value": "Creative Commons Attribution 1.0",
+        "source": "commons-desc-page"
+      },
+      "AttributionRequired": {
+        "value": "true",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/1.0",
+        "source": "commons-desc-page"
+      },
+      "Copyrighted": {
+        "value": "True",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "License": {
+        "value": "cc-by-1.0",
+        "source": "commons-templates",
+        "hidden": ""
+      }
+    }
+  },
+  "sha256": "6d1607dfb8fe898c6cabe1c74996929ff23835984acd04554d88c8e607d3e629",
+  "scope": "Selected development photo of reported category, no independent train/test separation claim; no user camera media"
+}

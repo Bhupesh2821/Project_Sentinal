@@ -1,0 +1,12 @@
+{
+  "title": "File:Flames in Ochoco Forest July 25 -2026 Fire Season in the Forest Service Pacific Northwest Region.jpg",
+  "license": "Public domain",
+  "license_url": "",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Flames_in_Ochoco_Forest_July_25_-2026_Fire_Season_in_the_Forest_Service_Pacific_Northwest_Region.jpg",
+  "author": "Forest Service Pacific Northwest Region",
+  "transform": "Real licensed photo repeated for8seconds at10fps; resized to at most1280pixels wide; video-only; no embedded predictions",
+  "derived": false,
+  "source_image": "../v02-evaluation/fire.jpg",
+  "sha256": "1c8ae1031d54ea375f7b6eab584c50f3f6aba8debe912ddf47f438a861b9f678",
+  "fixture_scope": "Repeated still, not naturally moving footage or independent tracking evaluation"
+}

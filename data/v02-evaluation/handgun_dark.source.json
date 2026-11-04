@@ -1,0 +1,8 @@
+{
+  "derived_from": "handgun.jpg",
+  "license": "Public domain",
+  "source_url": "https://commons.wikimedia.org/wiki/File:M1911a1.jpg",
+  "transform": "brightness multiplied .25",
+  "not_independent_scene": true,
+  "sha256": "4fc155321d99cd87cb3c45ba265109b3516d5899d45ad7f6e8a961bccb7ccf93"
+}

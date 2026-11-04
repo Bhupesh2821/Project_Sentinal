@@ -2,7 +2,7 @@
 
 All project-owned source, installed Python environment, models, configuration, data, databases, logs, recordings, cache, temporary files, archives, and exported development history live under:
 
-`/Users/prabhuram04yahoo.com/Documents/Bhupesh/Projects/Project Sentinal`
+`/Users/prabhuram04yahoo.com/Documents/Bhupesh/Projects/ProjectSentinal`
 
 The previous Documents/Codex workspace has no remaining project files. Files were moved with SHA256 checks, not left as a duplicate working copy. The former path-testing symlink was removed; it no longer points back to the project.
 

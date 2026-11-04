@@ -1,0 +1,11 @@
+{
+  "name": "CommandState",
+  "type": "object",
+  "description": "Bounded authoritative single-organization command state; accessed only by checked backend functions.",
+  "properties": {
+    "revision": {"type":"integer","minimum":0},
+    "payload": {"type":"object","additionalProperties":true}
+  },
+  "required": ["revision","payload"],
+  "rls": {"create":false,"read":false,"update":false,"delete":false}
+}

@@ -1,0 +1,1 @@
+{"id":"sentinal-command-center","name":"SENTINAL Command Center","short_name":"SENTINAL","description":"Human-supervised safety monitoring with a local AI engine.","start_url":"/app.html","scope":"/","display":"standalone","background_color":"#0b1018","theme_color":"#101925","icons":[{"src":"/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any"}]}

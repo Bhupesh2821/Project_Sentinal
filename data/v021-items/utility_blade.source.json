@@ -1,0 +1,107 @@
+{
+  "title": "File:Utility knife.jpg",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Utility_knife.jpg",
+  "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/Utility_knife.jpg/1280px-Utility_knife.jpg",
+  "chosen_license": "CC BY-SA 2.5",
+  "source_metadata": {
+    "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/Utility_knife.jpg/1280px-Utility_knife.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "thumbwidth": 1280,
+    "thumbheight": 960,
+    "responsiveUrls": {
+      "2": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Utility_knife.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+    },
+    "thumbattribs": {
+      "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/Utility_knife.jpg/1280px-Utility_knife.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "decoding": "async",
+      "loading": "lazy",
+      "width": 1280,
+      "height": 960,
+      "srcset": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Utility_knife.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled 2x"
+    },
+    "url": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Utility_knife.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "descriptionurl": "https://commons.wikimedia.org/wiki/File:Utility_knife.jpg",
+    "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=2595853",
+    "extmetadata": {
+      "DateTime": {
+        "value": "2007-08-21 06:50:53",
+        "source": "mediawiki-metadata",
+        "hidden": ""
+      },
+      "ObjectName": {
+        "value": "Utility knife",
+        "source": "mediawiki-metadata"
+      },
+      "CommonsMetadataExtension": {
+        "value": 1.2,
+        "source": "extension",
+        "hidden": ""
+      },
+      "Categories": {
+        "value": "Snap-off blade knives|Self-published work|Files by User:Jedudedek",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "Assessments": {
+        "value": "",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "ImageDescription": {
+        "value": "Utility knife",
+        "source": "commons-desc-page"
+      },
+      "DateTimeOriginal": {
+        "value": "2007-08-14",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a href=\"//commons.wikimedia.org/wiki/User:Jedudedek\" title=\"User:Jedudedek\">Mat\u011bj Ba\u0165ha</a>",
+        "source": "commons-desc-page"
+      },
+      "Permission": {
+        "value": "I, the copyright holder of this work, hereby publish it under the following license:",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseShortName": {
+        "value": "CC BY-SA 2.5",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "UsageTerms": {
+        "value": "Creative Commons Attribution-Share Alike 2.5",
+        "source": "commons-desc-page"
+      },
+      "AttributionRequired": {
+        "value": "true",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by-sa/2.5",
+        "source": "commons-desc-page"
+      },
+      "Copyrighted": {
+        "value": "True",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "License": {
+        "value": "cc-by-sa-2.5",
+        "source": "commons-templates",
+        "hidden": ""
+      }
+    }
+  },
+  "sha256": "4cad0db228d9a40ed634736f3414c5acdb8a7425f7bb571617d839517cc2d2b6",
+  "scope": "Selected development photo of reported category, no independent train/test separation claim; no user camera media"
+}

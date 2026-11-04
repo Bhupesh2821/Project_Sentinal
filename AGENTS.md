@@ -1,7 +1,7 @@
 # SENTINAL canonical workspace
 
 The user requires all project-owned files and data only in:
-`/Users/prabhuram04yahoo.com/Documents/Bhupesh/Projects/Project Sentinal`
+`/Users/prabhuram04yahoo.com/Documents/Bhupesh/Projects/ProjectSentinal`
 
 Use this directory explicitly as every command's working directory. Never recreate the previous Documents/Codex project contents. Preserve the working V0.1 implementation and inspect DEVELOPMENT_CHECKPOINT.md and VERIFICATION_REPORT.md before continuing.
 

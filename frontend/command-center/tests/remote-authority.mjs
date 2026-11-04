@@ -1,0 +1,14 @@
+import fs from 'node:fs';import {createClient} from '../node_modules/@base44/sdk/dist/index.js';
+const config=JSON.parse(fs.readFileSync('config/connected/base44-state.json','utf8'));const scoped=JSON.parse(fs.readFileSync('config/connected/base44-app-auth.json','utf8'));
+const target={appId:config.app_id,token:scoped.token,serverUrl:'https://sentinal-command-center-df4fc282.base44.app',appBaseUrl:'https://sentinal-command-center-df4fc282.base44.app'};
+const owner=createClient(target),privileged=createClient({...target,headers:{'X-Bypass-RLS':'true'}}),anonymous=createClient({...target,token:undefined});const report={test:'Actual deployed Base44 authentication, entity RLS, single-record compare-and-set and operator gateway',checks:{},passed:false,images_uploaded:false};const check=(name,ok)=>{report.checks[name]=Boolean(ok);if(!ok)throw new Error(name);};
+try{const me=await owner.auth.me();check('actual_native_app_owner_authenticated',me.role==='admin'&&me.email===config.owner_email);
+check('direct_owner_entity_reads_denied_by_rls',(await owner.entities.CommandState.list('-created_date',10)).length===0);
+let denied=false;try{await owner.entities.CommandState.create({revision:0,payload:{}});}catch(error){denied=error.status===403;}check('direct_owner_entity_write_denied',denied);
+check('anonymous_entity_reads_empty',(await anonymous.entities.CommandState.list('-created_date',10)).length===0);
+let unauthorized=false;try{await anonymous.functions.invoke('command',{action:'summary',data:{}});}catch(error){unauthorized=error.response?.status===401||error.status===401;}check('anonymous_command_rejected',unauthorized);
+const row=await privileged.entities.CommandState.get(config.state_id);check('provisioned_cloud_state_available',row.payload.schema_version===1);
+const results=await Promise.all([privileged.entities.CommandState.updateMany({id:config.state_id,revision:row.revision},{$set:{revision:row.revision+1}}),privileged.entities.CommandState.updateMany({id:config.state_id,revision:row.revision},{$set:{revision:row.revision+1}})]);check('actual_cloud_cas_has_exactly_one_winner',results.map(r=>r.updated).sort().join(',')==='0,1');
+const session=(await owner.functions.invoke('command',{action:'session',data:{}})).data;check('gateway_native_owner_role',session.user.role==='admin');const summary=(await owner.functions.invoke('command',{action:'summary',data:{}})).data;check('gateway_counts_actual_stored_incidents',summary.total_incidents===row.payload.incidents.length);
+report.passed=true;
+}catch(error){report.failure=error.message;report.status=error.response?.status||error.status||null;}finally{owner.cleanup();privileged.cleanup();anonymous.cleanup();fs.mkdirSync('docs/evidence/v03-2026-11-03',{recursive:true});fs.writeFileSync('docs/evidence/v03-2026-11-03/base44-authority-repeat.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));if(!report.passed)process.exitCode=1;}

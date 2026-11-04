@@ -1,0 +1,13 @@
+# Real validation inputs
+
+Downloaded for local development on 2026-10-20. These are recorded/public dataset inputs, never simulated detections.
+
+- `tests/fixtures/vtest.avi`: OpenCV public sample, `https://raw.githubusercontent.com/opencv/opencv/master/samples/data/vtest.avi`. Real fixed-camera moving pedestrian footage. Provenance: [OpenCV repository](https://github.com/opencv/opencv/blob/master/samples/data/vtest.avi). Tests report continuity of numerical IDs, which does not alone prove correct person identity. The project archive contains the downloaded sample with source attribution; no private camera footage is packaged.
+- `000000000260.jpg`, `000000000328.jpg`, `000000000315.jpg`: COCO128 subset, official Ultralytics asset `https://github.com/ultralytics/assets/releases/download/v0.0.0/coco128.zip`, `images/train2017/`. Labels in the corresponding annotation files identify suitcase, backpack and handbag respectively. Actual model detections may differ and are recorded in evidence. COCO images are sourced from their respective original creators; annotations and original images have separate terms. Images are local research validation assets, not project-authored artwork. See [COCO terms](https://cocodataset.org/#termsofuse).
+
+Image class demonstrations are distinct from moving-video tracking tests. No COCO image is presented as recorded moving footage. SHA256 values are included in the raw evidence JSON for inputs actually tested. Additional bag-class images may be listed in that evidence.
+
+Additional real COCO128 examples copied with their original label files: `000000000257.jpg` (backpack), `000000000532.jpg` and `000000000536.jpg` (handbags), `000000000572.jpg` (suitcase). These were deliberately selected after the initial misses; they are output demonstrations, not an unbiased accuracy sample. The original missed examples remain included.
+
+
+V0.1.2 expanded-model evaluation uses selected real Open Images validation photos. Asset URLs follow `https://s3.amazonaws.com/open-images-dataset/validation/<image_id>.jpg`; per-image IDs, expected labels, normalized annotations and hashes appear in safety evidence JSON. Selected public assets and their selected.json/extra-selection.json annotations remain under work/openimages-safety and are included in the portable archive for reproduction. The full training dataset is absent. Original creators retain image rights; these are not SENTINAL-authored images. Initial failed examples are preserved. Selected positives are not independent field-accuracy estimates, and repeated still photos are not moving-tool footage.

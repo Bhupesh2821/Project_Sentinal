@@ -1,0 +1,101 @@
+{
+  "key": "campfire",
+  "title": "File:Campfire flames at night.jpg",
+  "license": "CC BY-SA 4.0",
+  "source": {
+    "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Campfire_flames_at_night.jpg/1280px-Campfire_flames_at_night.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "thumbwidth": 1200,
+    "thumbheight": 800,
+    "responsiveUrls": {
+      "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Campfire_flames_at_night.jpg/3840px-Campfire_flames_at_night.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    "thumbattribs": {
+      "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Campfire_flames_at_night.jpg/1280px-Campfire_flames_at_night.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "decoding": "async",
+      "loading": "lazy",
+      "width": 1200,
+      "height": 800,
+      "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Campfire_flames_at_night.jpg/3840px-Campfire_flames_at_night.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+    },
+    "url": "https://upload.wikimedia.org/wikipedia/commons/1/15/Campfire_flames_at_night.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "descriptionurl": "https://commons.wikimedia.org/wiki/File:Campfire_flames_at_night.jpg",
+    "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=147843193",
+    "extmetadata": {
+      "DateTime": {
+        "value": "2024-04-28 22:58:29",
+        "source": "mediawiki-metadata",
+        "hidden": ""
+      },
+      "ObjectName": {
+        "value": "Campfire flames at night",
+        "source": "mediawiki-metadata"
+      },
+      "CommonsMetadataExtension": {
+        "value": 1.2,
+        "source": "extension",
+        "hidden": ""
+      },
+      "Categories": {
+        "value": "Camping|Flame|Campfires|Self-published work|Night in Canada",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "Assessments": {
+        "value": "",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "ImageDescription": {
+        "value": "Campfire at night, inflamed with small dried branches making yellow flames.",
+        "source": "commons-desc-page"
+      },
+      "DateTimeOriginal": {
+        "value": "2013-06-15 23:47:07",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a href=\"//commons.wikimedia.org/wiki/User:Marc-Lautenbacher\" title=\"User:Marc-Lautenbacher\">Marc-Lautenbacher</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY-SA 4.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "UsageTerms": {
+        "value": "Creative Commons Attribution-Share Alike 4.0",
+        "source": "commons-desc-page"
+      },
+      "AttributionRequired": {
+        "value": "true",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "commons-desc-page"
+      },
+      "Copyrighted": {
+        "value": "True",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "License": {
+        "value": "cc-by-sa-4.0",
+        "source": "commons-templates",
+        "hidden": ""
+      }
+    }
+  },
+  "sha256": "6fb01e41e80d01a0540467ea40ce3f69539afd8d5c623bb787e0329f65cc7892",
+  "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Campfire_flames_at_night.jpg/1280px-Campfire_flames_at_night.jpg"
+}

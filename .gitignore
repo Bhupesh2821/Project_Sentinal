@@ -1,0 +1,53 @@
+# Local environments and dependency/build caches
+.venv/
+venv/
+node_modules/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage*
+htmlcov/
+.next/
+dist/
+build/
+
+# Project-owned runtime, private data, history and distributable archives
+/work/
+/archives/
+/history/
+/recordings/
+/logs/
+/config/
+/data/
+*.sqlite3*
+*.db
+*.db-*
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.part
+*.download-part
+
+# Model binaries belong in approved asset storage, not Git history
+*.pt
+*.pth
+*.onnx
+*.safetensors
+*.mlmodel
+*.mlpackage/
+
+# Credentials and machine files
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+.DS_Store
+
+# Public fixture files are exported only by the reviewed source snapshot tool.
+# Ignore rules do not remove any historical tracked files or local user data.

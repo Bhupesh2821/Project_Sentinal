@@ -1,0 +1,12 @@
+{
+  "title": "File:Wildfire in Yellowstone National Park produces Pyrocumulus clouds1.jpg",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Wildfire_in_Yellowstone_National_Park_produces_Pyrocumulus_clouds1.jpg",
+  "author": "Brocken Inaglory",
+  "transform": "Real licensed photo repeated for8seconds at10fps; resized to at most1280pixels wide; video-only; no embedded predictions",
+  "derived": false,
+  "source_image": "../v02-evaluation/smoke.jpg",
+  "sha256": "07e8b24b03dd9c57987e4ac2f22cd7ae515aaf73ae9a069752dcf43e20b7e860",
+  "fixture_scope": "Repeated still, not naturally moving footage or independent tracking evaluation"
+}

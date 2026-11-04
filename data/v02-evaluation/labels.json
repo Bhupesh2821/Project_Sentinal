@@ -1,0 +1,240 @@
+{
+  "scope": "Selected small development screening, one annotator, source-pixel approximate boxes. No training/test disjointness proven. Fire/smoke use coarse aggregate visible-region boxes; strict IoU scores sensitive to this grouping. Negative means no visible target material (including semantic vapor and displayed-flame confounders). Occluded gun box is amodal original extent.",
+  "iou_threshold": 0.5,
+  "scenes": [
+    {
+      "file": "handgun.jpg",
+      "width": 586,
+      "height": 400,
+      "derived": false,
+      "boxes": [
+        {
+          "category": "weapon_handgun",
+          "bbox": [
+            8,
+            10,
+            585,
+            389
+          ]
+        }
+      ],
+      "source_metadata": "handgun.source.json"
+    },
+    {
+      "file": "rifle.jpg",
+      "width": 1280,
+      "height": 864,
+      "derived": false,
+      "boxes": [
+        {
+          "category": "weapon_longgun",
+          "bbox": [
+            425,
+            300,
+            1278,
+            690
+          ]
+        }
+      ],
+      "source_metadata": "rifle.source.json"
+    },
+    {
+      "file": "knife.jpg",
+      "width": 1280,
+      "height": 556,
+      "derived": false,
+      "boxes": [
+        {
+          "category": "weapon_knife",
+          "bbox": [
+            57,
+            105,
+            1210,
+            260
+          ]
+        },
+        {
+          "category": "weapon_knife",
+          "bbox": [
+            322,
+            350,
+            1115,
+            455
+          ]
+        }
+      ],
+      "source_metadata": "knife.source.json"
+    },
+    {
+      "file": "fire.jpg",
+      "width": 1280,
+      "height": 2274,
+      "derived": false,
+      "boxes": [
+        {
+          "category": "fire",
+          "bbox": [
+            0,
+            1450,
+            1040,
+            2200
+          ]
+        },
+        {
+          "category": "smoke",
+          "bbox": [
+            0,
+            0,
+            1280,
+            1600
+          ]
+        }
+      ],
+      "source_metadata": "fire.source.json"
+    },
+    {
+      "file": "smoke.jpg",
+      "width": 1280,
+      "height": 784,
+      "derived": false,
+      "boxes": [
+        {
+          "category": "smoke",
+          "bbox": [
+            0,
+            40,
+            1280,
+            340
+          ]
+        }
+      ],
+      "source_metadata": "smoke.source.json"
+    },
+    {
+      "file": "campfire.jpg",
+      "width": 1280,
+      "height": 853,
+      "derived": false,
+      "boxes": [
+        {
+          "category": "fire",
+          "bbox": [
+            0,
+            0,
+            1280,
+            853
+          ]
+        }
+      ],
+      "source_metadata": "campfire.source.json"
+    },
+    {
+      "file": "hairdryer.jpg",
+      "width": 1280,
+      "height": 1251,
+      "derived": false,
+      "boxes": [],
+      "source_metadata": "hairdryer.source.json"
+    },
+    {
+      "file": "drill.jpg",
+      "width": 1280,
+      "height": 1707,
+      "derived": false,
+      "boxes": [],
+      "source_metadata": "drill.source.json"
+    },
+    {
+      "file": "steam.jpg",
+      "width": 1280,
+      "height": 1575,
+      "derived": false,
+      "boxes": [],
+      "source_metadata": "steam.source.json"
+    },
+    {
+      "file": "fog_photo.jpg",
+      "width": 1280,
+      "height": 611,
+      "derived": false,
+      "boxes": [],
+      "source_metadata": "fog_photo.source.json"
+    },
+    {
+      "file": "lamp.jpg",
+      "width": 1280,
+      "height": 1707,
+      "derived": false,
+      "boxes": [],
+      "source_metadata": "lamp.source.json"
+    },
+    {
+      "file": "reflection.jpg",
+      "width": 1280,
+      "height": 720,
+      "derived": false,
+      "boxes": [],
+      "source_metadata": "reflection.source.json"
+    },
+    {
+      "file": "dust.jpg",
+      "width": 1280,
+      "height": 853,
+      "derived": false,
+      "boxes": [],
+      "source_metadata": "dust.source.json"
+    },
+    {
+      "file": "bright_light.jpg",
+      "width": 1280,
+      "height": 579,
+      "derived": false,
+      "boxes": [],
+      "source_metadata": "bright_light.source.json"
+    },
+    {
+      "file": "handgun_dark.jpg",
+      "width": 586,
+      "height": 400,
+      "derived": true,
+      "boxes": [
+        {
+          "category": "weapon_handgun",
+          "bbox": [
+            8,
+            10,
+            585,
+            389
+          ]
+        }
+      ],
+      "source_metadata": "handgun_dark.source.json"
+    },
+    {
+      "file": "handgun_occluded.jpg",
+      "width": 586,
+      "height": 400,
+      "derived": true,
+      "boxes": [
+        {
+          "category": "weapon_handgun",
+          "bbox": [
+            8,
+            10,
+            585,
+            389
+          ]
+        }
+      ],
+      "source_metadata": "handgun_occluded.source.json"
+    },
+    {
+      "file": "screen_flames_derived.jpg",
+      "width": 960,
+      "height": 720,
+      "derived": true,
+      "boxes": [],
+      "source_metadata": "screen_flames_derived.source.json"
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "key": "rifle",
+  "title": "File:A Marine armed with an M16 rifle stands guard in a bunker at Beirut International Airport DN-SN-84-05182.jpg",
+  "license": "Public domain",
+  "source": {
+    "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a1/A_Marine_armed_with_an_M16_rifle_stands_guard_in_a_bunker_at_Beirut_International_Airport_DN-SN-84-05182.jpg/1280px-A_Marine_armed_with_an_M16_rifle_stands_guard_in_a_bunker_at_Beirut_International_Airport_DN-SN-84-05182.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "thumbwidth": 1200,
+    "thumbheight": 810,
+    "responsiveUrls": {
+      "2": "https://upload.wikimedia.org/wikipedia/commons/a/a1/A_Marine_armed_with_an_M16_rifle_stands_guard_in_a_bunker_at_Beirut_International_Airport_DN-SN-84-05182.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+    },
+    "thumbattribs": {
+      "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a1/A_Marine_armed_with_an_M16_rifle_stands_guard_in_a_bunker_at_Beirut_International_Airport_DN-SN-84-05182.jpg/1280px-A_Marine_armed_with_an_M16_rifle_stands_guard_in_a_bunker_at_Beirut_International_Airport_DN-SN-84-05182.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "decoding": "async",
+      "loading": "lazy",
+      "width": 1200,
+      "height": 810,
+      "srcset": "https://upload.wikimedia.org/wikipedia/commons/a/a1/A_Marine_armed_with_an_M16_rifle_stands_guard_in_a_bunker_at_Beirut_International_Airport_DN-SN-84-05182.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled 2x"
+    },
+    "url": "https://upload.wikimedia.org/wikipedia/commons/a/a1/A_Marine_armed_with_an_M16_rifle_stands_guard_in_a_bunker_at_Beirut_International_Airport_DN-SN-84-05182.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "descriptionurl": "https://commons.wikimedia.org/wiki/File:A_Marine_armed_with_an_M16_rifle_stands_guard_in_a_bunker_at_Beirut_International_Airport_DN-SN-84-05182.jpg",
+    "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=172198828",
+    "extmetadata": {
+      "DateTime": {
+        "value": "2025-08-10 16:13:44",
+        "source": "mediawiki-metadata",
+        "hidden": ""
+      },
+      "ObjectName": {
+        "value": "A Marine armed with an M16 rifle stands guard in a bunker at Beirut International Airport DN-SN-84-05182",
+        "source": "mediawiki-metadata"
+      },
+      "CommonsMetadataExtension": {
+        "value": 1.2,
+        "source": "extension",
+        "hidden": ""
+      },
+      "Categories": {
+        "value": "PD US Government|Beirut Rafic Hariri International Airport|M1 helmets|M16A1 rifle|United States Marine Corps in Lebanon|Template Unknown (author)|Sandbags as fortifications|CC-PD-Mark|M16 rifle in United States Marine Corps service|Male soldiers|PASGT in 1983|Male people with M16 rifle",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "Assessments": {
+        "value": "",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "ImageDescription": {
+        "value": "A Marine armed with an M16 rifle stands guard in a bunker at Beirut International Airport.",
+        "source": "commons-desc-page"
+      },
+      "DateTimeOriginal": {
+        "value": "1983-12-10",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"nofollow\" class=\"external free\" href=\"https://catalog.archives.gov/id/6381759\">https://catalog.archives.gov/id/6381759</a>",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "Unknown author<span style=\"display: none;\">Unknown author</span>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "Public domain",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "UsageTerms": {
+        "value": "Public domain",
+        "source": "commons-desc-page"
+      },
+      "AttributionRequired": {
+        "value": "false",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "Copyrighted": {
+        "value": "False",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "License": {
+        "value": "pd",
+        "source": "commons-templates",
+        "hidden": ""
+      }
+    }
+  },
+  "sha256": "a02716bfb3071a348ac4eb5f81ad5388c5bc0b66d3142f6e2da4f0631660914a",
+  "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a1/A_Marine_armed_with_an_M16_rifle_stands_guard_in_a_bunker_at_Beirut_International_Airport_DN-SN-84-05182.jpg/1280px-A_Marine_armed_with_an_M16_rifle_stands_guard_in_a_bunker_at_Beirut_International_Airport_DN-SN-84-05182.jpg"
+}

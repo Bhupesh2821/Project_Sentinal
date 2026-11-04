@@ -1,9 +1,8 @@
-# SENTINAL V0.2.1 — MARK-007
-(Due to Storage limitations project has been uploaded in drive. 
-Drive link: https://drive.google.com/drive/folders/1r6tUR5Kz91T_Dp-tK3nGtzYzyIxX8TuZ?usp=sharing)
-A local macOS safety-monitoring hackathon prototype for **November 4, 2026**. It extends the existing Vision Core with real trained weapon and fire/smoke models, temporal incident assessment, local warnings and operator review. **Prototype accuracy is limited; detections are uncertain visual observations.**
+# SENTINAL V0.3.0 — Connected Command Center
 
-The only project root is `/Users/prabhuram04yahoo.com/Documents/Bhupesh/Projects/Project Sentinal`. Source, models, virtual environment, imported videos, databases, logs, caches, history and archives remain here. Camera credentials may be explicitly saved in macOS Keychain, the operating system's credential store. No footage is uploaded.
+A local AI engine and connected web command-center hackathon prototype for **November 4, 2026**. It extends the existing Vision Core with real trained weapon and fire/smoke models, temporal incident assessment, local warnings and operator review. **Prototype accuracy is limited; detections are uncertain visual observations.**
+
+The only project root is `/Users/prabhuram04yahoo.com/Documents/Bhupesh/Projects/ProjectSentinal`. Source, models, virtual environment, imported videos, databases, logs, caches, history and archives remain here. Camera credentials may be explicitly saved in macOS Keychain, the operating system's credential store. Connected delivery is off by default. When explicitly enabled it sends incident metadata and measured health to the selected authorized backend; private video stays local. The separate local browser preview also requires explicit opt-in.
 
 ## Launch
 
@@ -14,13 +13,23 @@ For a fresh installation, install a compatible Python 3.12 interpreter, then run
 From Terminal:
 
 ```sh
-cd "/Users/prabhuram04yahoo.com/Documents/Bhupesh/Projects/Project Sentinal"
+cd "/Users/prabhuram04yahoo.com/Documents/Bhupesh/Projects/ProjectSentinal"
 ./launch.command
 # Or preselect a local video without starting capture:
 ./launch.command --video "/absolute/path/to/video.mp4"
 # Demonstration preset, still requiring Start:
 ./demo.command
 ```
+
+## V0.3 website and private dashboard
+
+Hosted public website: [SENTINAL](https://sentinal-command-center-df4fc282.base44.app). Private native-authenticated dashboard: [Command center](https://sentinal-command-center-df4fc282.base44.app/app.html). Sign in with an explicitly authorized Base44 identity. [Hosted setup and operations](docs/BASE44_V03.md). Hosting does not move inference into the browser or enable private video uploads.
+
+Double-click **web.command** to start the local website and dashboard. First launch asks you to create your own local administrator password; there is no shared default password. It pairs an owner-only local device file without starting capture or metadata delivery. The service opens at `http://127.0.0.1:8765/app`. Keep its terminal open; Control+C stops it.
+
+In the desktop app, open **Connected command center… → Load paired device file…**, choose `config/connected/edge-credentials.json`, then deliberately enable outbound incident metadata. Start a selected camera or video separately. Possible alerts and measured health reach the signed-in command center. Local incident recording is a separate opt-in setting. To use Base44, load the separately provisioned Base44 pairing instead; do not send local and hosted stores through an uncontrolled two-way sync.
+
+The responsive dashboard has overview, live monitoring, AI models, incident review, camera health and administration pages. Reviews persist with permissions, optimistic record versions and an audit trail. Viewers cannot review. An explicitly authorized local RAM preview is available; hosted CCTV video streaming is not implemented. The public website cannot read private incidents. PWA manifests and an offline reconnect page are included; these are web applications, not native Windows or mobile packages.
 
 ## V0.2.1 detection and simultaneous cameras
 
@@ -34,7 +43,7 @@ Open **Multi-camera monitor** for up to eight explicitly selected saved cameras.
 
 **Nearby CCTV** lists ONVIF-advertised camera services on the selected local interface after explicit Refresh. An advertisement does not prove authentication or video availability. Manual authorized addresses remain available. [Network setup details](docs/NEARBY_CCTV_V021.md) explain permissions, hidden/proprietary devices and supported limits.
 
-[Base44 feasibility](docs/BASE44_FEASIBILITY.md) evaluates a future website/installable interface while retaining the local inference engine. No website was deployed or private project data uploaded.
+[V0.3 connected architecture and setup](docs/CONNECTED_V03.md) and [edge integration](docs/EDGE_V03.md) describe the implemented private dashboard, authenticated incident API, native Base44 integration, retries and account roles. Hosted deployment and verification results are recorded in the current verification report; local and cloud stores are separate authorities, not automatic database mirrors.
 
 ## Monitor a source
 
