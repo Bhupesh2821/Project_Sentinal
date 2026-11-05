@@ -1,0 +1,12 @@
+{
+  "title": "File:M1911a1.jpg",
+  "license": "Public domain US Army employee official duties",
+  "license_url": "",
+  "source_url": "https://commons.wikimedia.org/wiki/File:M1911a1.jpg",
+  "author": "US Army; color adjustment by Wikimedia user Hohum",
+  "transform": "Real licensed photo repeated for8seconds at10fps; resized to at most1280pixels wide; video-only; no embedded predictions",
+  "derived": false,
+  "source_image": "../v02-evaluation/handgun.jpg",
+  "sha256": "ca94f9e410a21a3c0e483894aa2f55289abf241fd119fa25061ee52f709f91a3",
+  "fixture_scope": "Repeated still, not naturally moving footage or independent tracking evaluation"
+}

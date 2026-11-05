@@ -1,0 +1,102 @@
+{
+  "title": "File:Foster Cleaver.jpg",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Foster_Cleaver.jpg",
+  "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Foster_Cleaver.jpg/1280px-Foster_Cleaver.jpg",
+  "chosen_license": "CC BY-SA 4.0",
+  "source_metadata": {
+    "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Foster_Cleaver.jpg/1280px-Foster_Cleaver.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "thumbwidth": 1280,
+    "thumbheight": 960,
+    "responsiveUrls": {
+      "2": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Foster_Cleaver.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+    },
+    "thumbattribs": {
+      "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Foster_Cleaver.jpg/1280px-Foster_Cleaver.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "decoding": "async",
+      "loading": "lazy",
+      "width": 1280,
+      "height": 960,
+      "srcset": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Foster_Cleaver.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled 2x"
+    },
+    "url": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Foster_Cleaver.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "descriptionurl": "https://commons.wikimedia.org/wiki/File:Foster_Cleaver.jpg",
+    "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=77653445",
+    "extmetadata": {
+      "DateTime": {
+        "value": "2019-03-29 20:59:26",
+        "source": "mediawiki-metadata",
+        "hidden": ""
+      },
+      "ObjectName": {
+        "value": "Foster Cleaver",
+        "source": "mediawiki-metadata"
+      },
+      "CommonsMetadataExtension": {
+        "value": 1.2,
+        "source": "extension",
+        "hidden": ""
+      },
+      "Categories": {
+        "value": "Cleavers|Self-published work",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "Assessments": {
+        "value": "",
+        "source": "commons-categories",
+        "hidden": ""
+      },
+      "ImageDescription": {
+        "value": "Cleaver, Blade",
+        "source": "commons-desc-page"
+      },
+      "DateTimeOriginal": {
+        "value": "2019-03-29",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a href=\"//commons.wikimedia.org/wiki/User:GCNorton\" title=\"User:GCNorton\">GCNorton</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY-SA 4.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "UsageTerms": {
+        "value": "Creative Commons Attribution-Share Alike 4.0",
+        "source": "commons-desc-page"
+      },
+      "AttributionRequired": {
+        "value": "true",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "commons-desc-page"
+      },
+      "Copyrighted": {
+        "value": "True",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "License": {
+        "value": "cc-by-sa-4.0",
+        "source": "commons-templates",
+        "hidden": ""
+      }
+    }
+  },
+  "sha256": "e4c29cec06076bc95dd5eb1c1e6346676bbcaa1165b7b8cc6e054341c343db32",
+  "scope": "Selected development photo of reported category, no independent train/test separation claim; no user camera media"
+}

@@ -1,0 +1,11 @@
+{
+  "source_url": "https://www.dvidshub.net/video/967533/5th-anglico-pistol-range",
+  "download_url": "https://d34w7g4gy10iej.cloudfront.net/video/2506/DOD_111088375/DOD_111088375.mp4",
+  "title": "5th Anglico Pistol Range",
+  "license": "Public domain",
+  "author": "Sgt Ramon Cardoza, U.S. Marine Corps",
+  "sha256": "83aebb238e90b4144fef355357cd16f875fd8b4c907af106bdbfa1be4d9d3ad4",
+  "description": "Authorized military qualification range in Okinawa,2025; no injury footage; evaluation only, no emergency simulated",
+  "derived_from": "weapon_range_original.mp4",
+  "transform": "Public-domain video trimmed source5\u201315s, scaled1280width, audio removed; genuine natural movement, no prediction overlays"
+}

@@ -1,0 +1,17 @@
+{
+  "name": "sentinal-base44-command-center",
+  "private": true,
+  "version": "0.3.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "node sync-assets.mjs && vite build",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "dependencies": {
+    "@base44/sdk": "0.8.40"
+  },
+  "devDependencies": {
+    "vite": "8.3.5"
+  }
+}

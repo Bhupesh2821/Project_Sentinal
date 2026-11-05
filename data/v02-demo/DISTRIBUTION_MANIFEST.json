@@ -1,0 +1,497 @@
+{
+  "schema": 1,
+  "purpose": "Explicit public fixture allowlist for SENTINALV0.2 portable source distribution",
+  "natural_photos": 14,
+  "derived_test_scenes": 3,
+  "scope": "14selected natural photos plus3derived perturbations,3repeated-still clips and1silent public-domain natural-motion range segment. This is not a representative validation set.",
+  "media_audit": {
+    "weapon_range_motion.mp4": {
+      "video_streams": 1,
+      "audio_streams": 0,
+      "verified_using": "Bundled development FFmpeg stream metadata inspection",
+      "stream_metadata": [
+        "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1280x2276 [SAR 4096:4095 DAR 262144:466011], 4512 kb/s, SAR 5121:5120 DAR 9:16, 29.97 fps, 29.97 tbr, 30k tbn (default)"
+      ]
+    }
+  },
+  "excluded_local_assets": [
+    "fireplace_motion.mp4",
+    "smoke_motion.mp4",
+    "Mixkit-terms.html",
+    "Mixkit-video-Free-License.html",
+    "nps-fire-original.mp4",
+    "nps-fire-source.html",
+    "weapon_range_original.mp4",
+    "unused video thumbnails and unused screening photos"
+  ],
+  "exclusion_reason": "Raw stock redistribution and unused/unclear rights assets are not included. Original DVIDS clip includes third-party music; only the verified silent derivative is distributed. Excluded files remain local.",
+  "files": [
+    {
+      "path": "data/v02-evaluation/handgun.jpg",
+      "sha256": "14754d46ece29165b85c918535bb2cf77ac7c7c82d2f53090fe73711783f704e",
+      "bytes": 81595,
+      "title": "File:M1911a1.jpg",
+      "license": "Public domain US Army employee official duties",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:M1911a1.jpg",
+      "author": "US Army; color adjustment by Wikimedia user Hohum",
+      "transform": "Downloaded public photographic fixture; source metadata retained",
+      "derived": false
+    },
+    {
+      "path": "data/v02-evaluation/handgun.source.json",
+      "sha256": "8029a3d0f208146718dca95dcfe9a220d5b66144c4a3fa28f4235bdbc5db739c",
+      "bytes": 417,
+      "license": "Source metadata",
+      "source_url": "https://commons.wikimedia.org/wiki/File:M1911a1.jpg"
+    },
+    {
+      "path": "data/v02-evaluation/rifle.jpg",
+      "sha256": "a02716bfb3071a348ac4eb5f81ad5388c5bc0b66d3142f6e2da4f0631660914a",
+      "bytes": 244485,
+      "title": "File:A Marine armed with an M16 rifle stands guard in a bunker at Beirut International Airport DN-SN-84-05182.jpg",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:A_Marine_armed_with_an_M16_rifle_stands_guard_in_a_bunker_at_Beirut_International_Airport_DN-SN-84-05182.jpg",
+      "author": "Unknown authorUnknown author",
+      "transform": "Downloaded public photographic fixture; source metadata retained",
+      "derived": false
+    },
+    {
+      "path": "data/v02-evaluation/rifle.source.json",
+      "sha256": "0d21b027c797e94f5d5d9924bd7f37c38b0b83b0b2bbe21f0a1c1d4ec916957d",
+      "bytes": 4933,
+      "license": "Source metadata",
+      "source_url": "https://commons.wikimedia.org/wiki/File:A_Marine_armed_with_an_M16_rifle_stands_guard_in_a_bunker_at_Beirut_International_Airport_DN-SN-84-05182.jpg"
+    },
+    {
+      "path": "data/v02-evaluation/knife.jpg",
+      "sha256": "2fedce5877c1716c91e77b28606473f7419df9abdbc0e7713962d6f8ac288a54",
+      "bytes": 45823,
+      "title": "File:2020 No\u017ce kuchenne Gerlach.jpg",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2020_No%C5%BCe_kuchenne_Gerlach.jpg",
+      "author": "Jacek Halicki",
+      "transform": "Downloaded public photographic fixture; source metadata retained",
+      "derived": false
+    },
+    {
+      "path": "data/v02-evaluation/knife.source.json",
+      "sha256": "85aea4cb185378b4a1503363eb879663175c1bb34c5ea7835281019931991d8d",
+      "bytes": 4020,
+      "license": "Source metadata",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2020_No%C5%BCe_kuchenne_Gerlach.jpg"
+    },
+    {
+      "path": "data/v02-evaluation/fire.jpg",
+      "sha256": "a65c5252717c8c3aef5729b3833ddc2b6a98ea56df412b0c6fbb13bd4729904c",
+      "bytes": 714241,
+      "title": "File:Flames in Ochoco Forest July 25 -2026 Fire Season in the Forest Service Pacific Northwest Region.jpg",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Flames_in_Ochoco_Forest_July_25_-2026_Fire_Season_in_the_Forest_Service_Pacific_Northwest_Region.jpg",
+      "author": "Forest Service Pacific Northwest Region",
+      "transform": "Downloaded public photographic fixture; source metadata retained",
+      "derived": false
+    },
+    {
+      "path": "data/v02-evaluation/fire.source.json",
+      "sha256": "657674e449f202799bb3d81a753ec96b2354fb0e4238f5c9b0001ec98d64e1da",
+      "bytes": 4888,
+      "license": "Source metadata",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Flames_in_Ochoco_Forest_July_25_-2026_Fire_Season_in_the_Forest_Service_Pacific_Northwest_Region.jpg"
+    },
+    {
+      "path": "data/v02-evaluation/smoke.jpg",
+      "sha256": "e4b0280204e68014d7c8e79586a130fc4c8024f649bf4ad27590ed5c642f15c9",
+      "bytes": 325135,
+      "title": "File:Wildfire in Yellowstone National Park produces Pyrocumulus clouds1.jpg",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Wildfire_in_Yellowstone_National_Park_produces_Pyrocumulus_clouds1.jpg",
+      "author": "Brocken Inaglory",
+      "transform": "Downloaded public photographic fixture; source metadata retained",
+      "derived": false
+    },
+    {
+      "path": "data/v02-evaluation/smoke.source.json",
+      "sha256": "4c2be12c234b362afd74c674a301a419f93b6acf84195cdfaf62ccf63dffd530",
+      "bytes": 4960,
+      "license": "Source metadata",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Wildfire_in_Yellowstone_National_Park_produces_Pyrocumulus_clouds1.jpg"
+    },
+    {
+      "path": "data/v02-evaluation/campfire.jpg",
+      "sha256": "6fb01e41e80d01a0540467ea40ce3f69539afd8d5c623bb787e0329f65cc7892",
+      "bytes": 202963,
+      "title": "File:Campfire flames at night.jpg",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Campfire_flames_at_night.jpg",
+      "author": "Marc-Lautenbacher",
+      "transform": "Downloaded public photographic fixture; source metadata retained",
+      "derived": false
+    },
+    {
+      "path": "data/v02-evaluation/campfire.source.json",
+      "sha256": "cc7cef884eb6016efcc1fd2be32cb7cbd375de0e532a080f99d0786b004f140c",
+      "bytes": 3952,
+      "license": "Source metadata",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Campfire_flames_at_night.jpg"
+    },
+    {
+      "path": "data/v02-evaluation/hairdryer.jpg",
+      "sha256": "4a8cde9b4f0b87a1bac8a475d1b45df5c43db3c74bf04a6e2cbd76313d891fdd",
+      "bytes": 249650,
+      "title": "File:HITACHI HAIR DRYER HD-1650.jpg",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:HITACHI_HAIR_DRYER_HD-1650.jpg",
+      "author": "Dinkun Chen",
+      "transform": "Downloaded public photographic fixture; source metadata retained",
+      "derived": false
+    },
+    {
+      "path": "data/v02-evaluation/hairdryer.source.json",
+      "sha256": "d7bdc871877de2bfd99ac93e0b8bb061c0cdb5c46e98eea7cb8bba3a2de07fa8",
+      "bytes": 4269,
+      "license": "Source metadata",
+      "source_url": "https://commons.wikimedia.org/wiki/File:HITACHI_HAIR_DRYER_HD-1650.jpg"
+    },
+    {
+      "path": "data/v02-evaluation/drill.jpg",
+      "sha256": "a756c291e52c136332f7f351b4ada73a604336a2a870fa3fec8e00974d197220",
+      "bytes": 366797,
+      "title": "File:Panasonic Cordless Drill & Driver EY1DD2, Ottobrunn (20250410-P1046293).jpg",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Panasonic_Cordless_Drill_%26_Driver_EY1DD2,_Ottobrunn_(20250410-P1046293).jpg",
+      "author": "Matti Blume",
+      "transform": "Downloaded public photographic fixture; source metadata retained",
+      "derived": false
+    },
+    {
+      "path": "data/v02-evaluation/drill.source.json",
+      "sha256": "bf0e776d18301dc7fc62b431daf41e7fab8c6f609583e36776a1229a0f592f04",
+      "bytes": 5879,
+      "license": "Source metadata",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Panasonic_Cordless_Drill_%26_Driver_EY1DD2,_Ottobrunn_(20250410-P1046293).jpg"
+    },
+    {
+      "path": "data/v02-evaluation/steam.jpg",
+      "sha256": "d9f326a8c786e8e4bdf96dd416934f2cc3bde375b2a9cc66652f33dfee00fb6d",
+      "bytes": 376004,
+      "title": "File:Steaming Tea Kettle 2025.jpg",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Steaming_Tea_Kettle_2025.jpg",
+      "author": "Seasider53",
+      "transform": "Downloaded public photographic fixture; source metadata retained",
+      "derived": false
+    },
+    {
+      "path": "data/v02-evaluation/steam.source.json",
+      "sha256": "992b844c38d5bb1f77411442a3c7994c4630abdce3775b7a36fd67abeb66a103",
+      "bytes": 3868,
+      "license": "Source metadata",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Steaming_Tea_Kettle_2025.jpg"
+    },
+    {
+      "path": "data/v02-evaluation/fog_photo.jpg",
+      "sha256": "432e1c51d4c3183e911470edb7e0e2fa7870f48eb776d4f6ee9b376697671938",
+      "bytes": 77009,
+      "title": "File:Forested hills in Lysekil in fog - B&W.jpg",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Forested_hills_in_Lysekil_in_fog_-_B%26W.jpg",
+      "author": "W.carter",
+      "transform": "Downloaded public photographic fixture; source metadata retained",
+      "derived": false
+    },
+    {
+      "path": "data/v02-evaluation/fog_photo.source.json",
+      "sha256": "3ccf6afd3ca3c6d593e27b734b89b4d5c0f0fe179152e45be36de189dcc13062",
+      "bytes": 5033,
+      "license": "Source metadata",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Forested_hills_in_Lysekil_in_fog_-_B%26W.jpg"
+    },
+    {
+      "path": "data/v02-evaluation/lamp.jpg",
+      "sha256": "bec7842b55ea78cacf9e4e8b545da9c7cf32978daa9f936c2c6c3c4eb841ecb2",
+      "bytes": 235405,
+      "title": "File:The Three Lamps at night - geograph.org.uk - 7430314.jpg",
+      "license": "CC BY-SA 2.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:The_Three_Lamps_at_night_-_geograph.org.uk_-_7430314.jpg",
+      "author": "Neil Owen",
+      "transform": "Downloaded public photographic fixture; source metadata retained",
+      "derived": false
+    },
+    {
+      "path": "data/v02-evaluation/lamp.source.json",
+      "sha256": "5edca8d1bbaf0beac3e90f1507e83e005da92a0109ee6fcee0f39840f8dc3abc",
+      "bytes": 6763,
+      "license": "Source metadata",
+      "source_url": "https://commons.wikimedia.org/wiki/File:The_Three_Lamps_at_night_-_geograph.org.uk_-_7430314.jpg"
+    },
+    {
+      "path": "data/v02-evaluation/reflection.jpg",
+      "sha256": "05829e2e57e4d7165b827ddef52fdcf0725432e677bb88c38470cfb657a155fc",
+      "bytes": 188645,
+      "title": "File:Water reflection of sunset with gray and orange clouds and boats moored to the bank in Pakse Laos.jpg",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Water_reflection_of_sunset_with_gray_and_orange_clouds_and_boats_moored_to_the_bank_in_Pakse_Laos.jpg",
+      "author": "Basile Morin",
+      "transform": "Downloaded public photographic fixture; source metadata retained",
+      "derived": false
+    },
+    {
+      "path": "data/v02-evaluation/reflection.source.json",
+      "sha256": "a1f492ed70c7557824d0ead619305b930adfc416a832bba10e0f933c02366b83",
+      "bytes": 6011,
+      "license": "Source metadata",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Water_reflection_of_sunset_with_gray_and_orange_clouds_and_boats_moored_to_the_bank_in_Pakse_Laos.jpg"
+    },
+    {
+      "path": "data/v02-evaluation/dust.jpg",
+      "sha256": "b8a45157db57e3406e6860f843c60efce3a4450c332d177bd3602ca4b35aead3",
+      "bytes": 237971,
+      "title": "File:Dust Cloud in Etosha National Park.jpg",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Dust_Cloud_in_Etosha_National_Park.jpg",
+      "author": "Yathin S Krishnappa",
+      "transform": "Downloaded public photographic fixture; source metadata retained",
+      "derived": false
+    },
+    {
+      "path": "data/v02-evaluation/dust.source.json",
+      "sha256": "70bb94fe0da36283b6e37437f7154eaad88d540dad77572abb1373e8a7077636",
+      "bytes": 4721,
+      "license": "Source metadata",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Dust_Cloud_in_Etosha_National_Park.jpg"
+    },
+    {
+      "path": "data/v02-evaluation/bright_light.jpg",
+      "sha256": "fab1ef16eaa53093009651966b67065365a65861114dda67eaea2d010e42212e",
+      "bytes": 85737,
+      "title": "File:Maardu Northern lights \u2014 Estonia, 2022.jpg",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Maardu_Northern_lights_%E2%80%94_Estonia,_2022.jpg",
+      "author": "Maxim Bilovitskiy",
+      "transform": "Downloaded public photographic fixture; source metadata retained",
+      "derived": false
+    },
+    {
+      "path": "data/v02-evaluation/bright_light.source.json",
+      "sha256": "7fc25d723030aa6d57d35322691668050e308b9717e7b3042cc28ea5cc005a09",
+      "bytes": 5151,
+      "license": "Source metadata",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Maardu_Northern_lights_%E2%80%94_Estonia,_2022.jpg"
+    },
+    {
+      "path": "data/v02-evaluation/handgun_dark.jpg",
+      "sha256": "4fc155321d99cd87cb3c45ba265109b3516d5899d45ad7f6e8a961bccb7ccf93",
+      "bytes": 29139,
+      "title": "File:M1911a1.jpg",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:M1911a1.jpg",
+      "author": "US Army; color adjustment by Wikimedia user Hohum",
+      "transform": "brightness multiplied .25",
+      "derived": true
+    },
+    {
+      "path": "data/v02-evaluation/handgun_dark.source.json",
+      "sha256": "45af2c0411c8ed6779cea82d489f63e1a0206e802f47ab56ef51dc05e25b5761",
+      "bytes": 293,
+      "license": "Source metadata",
+      "source_url": "https://commons.wikimedia.org/wiki/File:M1911a1.jpg"
+    },
+    {
+      "path": "data/v02-evaluation/handgun_occluded.jpg",
+      "sha256": "fc3cec464990ac9291220bda8cc318956ba4e1b5625671c3fb822a75e6dafa70",
+      "bytes": 40115,
+      "title": "File:M1911a1.jpg",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:M1911a1.jpg",
+      "author": "US Army; color adjustment by Wikimedia user Hohum",
+      "transform": "synthetic gray vertical occlusion x230:380",
+      "derived": true
+    },
+    {
+      "path": "data/v02-evaluation/handgun_occluded.source.json",
+      "sha256": "9b34bd4041acb6a64410e2b99228a5b3afee9037fbd07371bf743ae57b0e8cff",
+      "bytes": 310,
+      "license": "Source metadata",
+      "source_url": "https://commons.wikimedia.org/wiki/File:M1911a1.jpg"
+    },
+    {
+      "path": "data/v02-evaluation/screen_flames_derived.jpg",
+      "sha256": "5905aa89bfe4c1041a0212d0eba6d08cd075f978d58b4c1bf97eb950388bc077",
+      "bytes": 166477,
+      "title": "File:Campfire flames at night.jpg",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Campfire_flames_at_night.jpg",
+      "author": "Marc-Lautenbacher",
+      "transform": "Original licensed fire photo rendered inside a synthetic display bezel; simulated screen confounder, not natural photograph",
+      "derived": true
+    },
+    {
+      "path": "data/v02-evaluation/screen_flames_derived.source.json",
+      "sha256": "c659f03e5bed6f5358dbc043ba533149351dc2102172068a77b51fa591b92089",
+      "bytes": 375,
+      "license": "Source metadata",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Campfire_flames_at_night.jpg"
+    },
+    {
+      "path": "data/v02-evaluation/labels.json",
+      "sha256": "e6d9f86f040e7ec5fea598cecdb7dd2692969118b7714cd36cbb6f880a8ed483",
+      "bytes": 5020,
+      "license": "SENTINAL AGPL-3.0 annotations; images retain separate licenses",
+      "source_url": ""
+    },
+    {
+      "path": "data/v02-demo/handgun_repeated_still.mp4",
+      "sha256": "ca94f9e410a21a3c0e483894aa2f55289abf241fd119fa25061ee52f709f91a3",
+      "bytes": 204863,
+      "title": "File:M1911a1.jpg",
+      "license": "Public domain US Army employee official duties",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:M1911a1.jpg",
+      "author": "US Army; color adjustment by Wikimedia user Hohum",
+      "transform": "Real licensed photo repeated for8seconds at10fps; resized to at most1280pixels wide; video-only; no embedded predictions",
+      "derived": false,
+      "source_image": "../v02-evaluation/handgun.jpg",
+      "fixture_scope": "Repeated still, not naturally moving footage or independent tracking evaluation"
+    },
+    {
+      "path": "data/v02-demo/handgun_repeated_still.source.json",
+      "sha256": "1ebc83d203a8b18cd2b42a9752d2a65d0a7d98ac2dfed2adf0e3c0bf5a9a5ec5",
+      "bytes": 646,
+      "license": "Source metadata",
+      "source_url": "https://commons.wikimedia.org/wiki/File:M1911a1.jpg"
+    },
+    {
+      "path": "data/v02-demo/fire_repeated_still.mp4",
+      "sha256": "1c8ae1031d54ea375f7b6eab584c50f3f6aba8debe912ddf47f438a861b9f678",
+      "bytes": 4165796,
+      "title": "File:Flames in Ochoco Forest July 25 -2026 Fire Season in the Forest Service Pacific Northwest Region.jpg",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Flames_in_Ochoco_Forest_July_25_-2026_Fire_Season_in_the_Forest_Service_Pacific_Northwest_Region.jpg",
+      "author": "Forest Service Pacific Northwest Region",
+      "transform": "Real licensed photo repeated for8seconds at10fps; resized to at most1280pixels wide; video-only; no embedded predictions",
+      "derived": false,
+      "source_image": "../v02-evaluation/fire.jpg",
+      "fixture_scope": "Repeated still, not naturally moving footage or independent tracking evaluation"
+    },
+    {
+      "path": "data/v02-demo/fire_repeated_still.source.json",
+      "sha256": "3864f717187b7cfd895dd5cd8323e824c0b6cbab18d3770b00ea651d7e005848",
+      "bytes": 778,
+      "license": "Source metadata",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Flames_in_Ochoco_Forest_July_25_-2026_Fire_Season_in_the_Forest_Service_Pacific_Northwest_Region.jpg"
+    },
+    {
+      "path": "data/v02-demo/smoke_repeated_still.mp4",
+      "sha256": "07e8b24b03dd9c57987e4ac2f22cd7ae515aaf73ae9a069752dcf43e20b7e860",
+      "bytes": 2216029,
+      "title": "File:Wildfire in Yellowstone National Park produces Pyrocumulus clouds1.jpg",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Wildfire_in_Yellowstone_National_Park_produces_Pyrocumulus_clouds1.jpg",
+      "author": "Brocken Inaglory",
+      "transform": "Real licensed photo repeated for8seconds at10fps; resized to at most1280pixels wide; video-only; no embedded predictions",
+      "derived": false,
+      "source_image": "../v02-evaluation/smoke.jpg",
+      "fixture_scope": "Repeated still, not naturally moving footage or independent tracking evaluation"
+    },
+    {
+      "path": "data/v02-demo/smoke_repeated_still.source.json",
+      "sha256": "6e676c45634979c82583f92058061f510a5ad67e76af087a9a3074e4d7c214a9",
+      "bytes": 741,
+      "license": "Source metadata",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Wildfire_in_Yellowstone_National_Park_produces_Pyrocumulus_clouds1.jpg"
+    },
+    {
+      "path": "data/v02-demo/weapon_range_motion.mp4",
+      "sha256": "83aebb238e90b4144fef355357cd16f875fd8b4c907af106bdbfa1be4d9d3ad4",
+      "bytes": 5650646,
+      "source_url": "https://www.dvidshub.net/video/967533/5th-anglico-pistol-range",
+      "download_url": "https://d34w7g4gy10iej.cloudfront.net/video/2506/DOD_111088375/DOD_111088375.mp4",
+      "title": "5th Anglico Pistol Range",
+      "license": "Public domain",
+      "author": "Sgt Ramon Cardoza, U.S. Marine Corps",
+      "description": "Authorized military qualification range in Okinawa,2025; no injury footage; evaluation only, no emergency simulated",
+      "derived_from": "weapon_range_original.mp4",
+      "transform": "Public-domain video trimmed source5\u201315s, scaled1280width, audio removed; genuine natural movement, no prediction overlays",
+      "audio_streams_verified": 0
+    },
+    {
+      "path": "data/v02-demo/weapon_range_motion.source.json",
+      "sha256": "1e07e1e95157ccc9078d573ac73aef7ee8c167dc697d69dd3d57a953b5569104",
+      "bytes": 715,
+      "license": "Source metadata",
+      "source_url": "https://www.dvidshub.net/video/967533/5th-anglico-pistol-range"
+    },
+    {
+      "path": "data/v02-demo/README.md",
+      "sha256": "9392eaa2e7245f82f360c642ef3469e6ca28049a6da1523b75a91a9e486c4579",
+      "bytes": 809,
+      "license": "SENTINAL documentation AGPL-3.0",
+      "source_url": ""
+    }
+  ],
+  "included_files": [
+    "data/v02-evaluation/handgun.jpg",
+    "data/v02-evaluation/handgun.source.json",
+    "data/v02-evaluation/rifle.jpg",
+    "data/v02-evaluation/rifle.source.json",
+    "data/v02-evaluation/knife.jpg",
+    "data/v02-evaluation/knife.source.json",
+    "data/v02-evaluation/fire.jpg",
+    "data/v02-evaluation/fire.source.json",
+    "data/v02-evaluation/smoke.jpg",
+    "data/v02-evaluation/smoke.source.json",
+    "data/v02-evaluation/campfire.jpg",
+    "data/v02-evaluation/campfire.source.json",
+    "data/v02-evaluation/hairdryer.jpg",
+    "data/v02-evaluation/hairdryer.source.json",
+    "data/v02-evaluation/drill.jpg",
+    "data/v02-evaluation/drill.source.json",
+    "data/v02-evaluation/steam.jpg",
+    "data/v02-evaluation/steam.source.json",
+    "data/v02-evaluation/fog_photo.jpg",
+    "data/v02-evaluation/fog_photo.source.json",
+    "data/v02-evaluation/lamp.jpg",
+    "data/v02-evaluation/lamp.source.json",
+    "data/v02-evaluation/reflection.jpg",
+    "data/v02-evaluation/reflection.source.json",
+    "data/v02-evaluation/dust.jpg",
+    "data/v02-evaluation/dust.source.json",
+    "data/v02-evaluation/bright_light.jpg",
+    "data/v02-evaluation/bright_light.source.json",
+    "data/v02-evaluation/handgun_dark.jpg",
+    "data/v02-evaluation/handgun_dark.source.json",
+    "data/v02-evaluation/handgun_occluded.jpg",
+    "data/v02-evaluation/handgun_occluded.source.json",
+    "data/v02-evaluation/screen_flames_derived.jpg",
+    "data/v02-evaluation/screen_flames_derived.source.json",
+    "data/v02-evaluation/labels.json",
+    "data/v02-demo/handgun_repeated_still.mp4",
+    "data/v02-demo/handgun_repeated_still.source.json",
+    "data/v02-demo/fire_repeated_still.mp4",
+    "data/v02-demo/fire_repeated_still.source.json",
+    "data/v02-demo/smoke_repeated_still.mp4",
+    "data/v02-demo/smoke_repeated_still.source.json",
+    "data/v02-demo/weapon_range_motion.mp4",
+    "data/v02-demo/weapon_range_motion.source.json",
+    "data/v02-demo/README.md"
+  ]
+}

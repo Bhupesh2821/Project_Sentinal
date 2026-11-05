@@ -1,0 +1,18 @@
+[
+  {
+    "filename": "fire_smoke.pt",
+    "error": "RemoteDisconnected"
+  },
+  {
+    "filename": "fire_smoke-LICENSE.txt",
+    "error": "RemoteDisconnected"
+  },
+  {
+    "filename": "weapon_handgun.pt",
+    "error": "URLError"
+  },
+  {
+    "filename": "weapon_handgun-MODEL_CARD.md",
+    "error": "RemoteDisconnected"
+  }
+]

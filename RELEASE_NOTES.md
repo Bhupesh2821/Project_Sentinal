@@ -1,9 +1,21 @@
-# SENTINAL V0.2.1 — detection visibility and multiple-camera update
+# SENTINAL V0.3.2
 
-Preserves V0.2 camera/video/network adapters, local inference and human review. Fixes model predictions being hidden by ByteTrack confirmation, separates box display scores from temporal alert scores, and keeps each hazard overlay on its exact analyzed frame with a visible timestamp.
+The desktop requests local-camera consent from the app window on Start or Refresh. It validates the exact selected device before capture begins. Stop, Close and source or selection changes cancel the pending start, including Stop on a camera-wall tile. The owner confirmed live Mac camera video. The Base44 dashboard uses the verified V0.3.1 sign-in flow.
 
-Adds an explicit Nearby CCTV list with local-interface selection, saved-camera batch selection and a bounded eight-source monitoring wall. Capture is independent per source; the ordinary and specialized models are shared by a fair serial scheduler. Per-camera observations, measured timings, warnings, individual Stop, shared incident history and human review are integrated. Latest incident intake is bounded per camera. Rapid restart waits for cleanup; failed capture cleanup prevents unsafe retry. Nothing starts from discovery or selection alone.
+# SENTINAL V0.3.1 — dashboard access repair and native Mac app
 
-Adds an optional pinned official YOLO11s model and a reproducible real-model combination evaluation for the reported objects and existing positives/lookalikes. The original default and three model choices are preserved. Model quality remains experimental: some spoon/scissors/knife/fire examples still fail, a toy may produce a possible-weapon result, and loose-blade recognition has no dedicated independently validated detector. No setting eliminates all false positives/negatives.
+The first hosted sign-in button incorrectly targeted `/login`, which the CLI static host served as the public landing page. The earlier existing-session checks missed this path. The dashboard now uses Base44's supported Google provider entry, with visible connection/session errors, Retry connection, sign-out/switch-account controls and old-login-link recovery. Permissions and existing incidents remain intact. Actual first-entry navigation and callback acceptance are recorded separately from Google password/consent completion.
 
-Current measured verification, scope and unresolved defects are in VERIFICATION_REPORT.md. Prior release documents are retained in docs/verification/V0.2.0-* and the previous archive remains intact. No signed standalone app or Base44 website is claimed. All project-owned data remains in the existing canonical folder; privacy defaults remain off.
+A real locally signed `SENTINAL.app` opens the existing PySide desktop without a manual terminal launch. Actual LaunchServices startup, real public-video inference/box/possible alert, subprocess execution, Stop/resource release and normal Quit passed22checks. This small native app uses the existing project environment and models; it is not a portable installer. It starts with capture, recording and outbound delivery off. The complete project release includes the verified bundle beside its source; build instructions remain available for another development environment.
+
+The previous V0.3.0 source, archive and reports are preserved. Existing model accuracy and hardware/video limits remain documented. See the current verification report and docs/MACOS_APP.md.
+
+# SENTINAL V0.3.0 — Connected Command Center
+
+The Python Vision Core now has explicit outbound signed incident/health delivery, destination-bound bounded retries, private paired credentials and an optional headless monitor. The existing desktop, exact camera selection, dynamic video library, ONVIF/RTSP support, multi-camera wall and trained models are preserved.
+
+A responsive public website and private six-page command center integrate with a local SQLite service or a designated Base44 frontend/backend. Human authentication, viewer/operator/admin permissions, versioned review, audit, retention and private-by-default records are implemented. Remote CCTV video, native mobile/Windows packages, unattended-bag reasoning, GHS and external notifications remain unimplemented. Hosted deployments, Git publication and Drive snapshots are claims only where current verification records successful readback.
+
+Account changes clear draft notes and invalidate delayed private responses. Stopped desktop sources no longer report active processing, and hosted pairing transport settings survive desktop loading. Source and package exports exclude private runtime data, credentials, dependencies and build caches.
+
+See the current verification report for executed counts, real inference evidence, measured timings and limits. The V0.2.1 release and evaluation are preserved; detector reliability has not been upgraded by adding a website.

@@ -1,26 +1,39 @@
-# SENTINAL V0.2.1 — MARK-007
-(Due to Storage limitations project has been uploaded in drive. 
-Drive link: https://drive.google.com/drive/folders/1r6tUR5Kz91T_Dp-tK3nGtzYzyIxX8TuZ?usp=sharing)
-A local macOS safety-monitoring hackathon prototype for **November 4, 2026**. It extends the existing Vision Core with real trained weapon and fire/smoke models, temporal incident assessment, local warnings and operator review. **Prototype accuracy is limited; detections are uncertain visual observations.**
+# SENTINAL V0.3.2 — Desktop App and Command Center
 
-The only project root is `/Users/prabhuram04yahoo.com/Documents/Bhupesh/Projects/Project Sentinal`. Source, models, virtual environment, imported videos, databases, logs, caches, history and archives remain here. Camera credentials may be explicitly saved in macOS Keychain, the operating system's credential store. No footage is uploaded.
+A local AI engine and connected web command-center hackathon prototype for **November 4, 2026**. It extends the existing Vision Core with real trained weapon and fire/smoke models, temporal incident assessment, local warnings and operator review. **Prototype accuracy is limited; detections are uncertain visual observations.**
+
+The only project root is `/Users/prabhuram04yahoo.com/Documents/Bhupesh/Projects/ProjectSentinal`. Source, models, virtual environment, imported videos, databases, logs, caches, history and archives remain here. Camera credentials may be explicitly saved in macOS Keychain, the operating system's credential store. Connected delivery is off by default. When explicitly enabled it sends incident metadata and measured health to the selected authorized backend; private video stays local. The separate local browser preview also requires explicit opt-in.
 
 ## Launch
 
-On this Mac, double-click **launch.command**. For the bundled silent, public-domain moving-weapon demonstration, double-click **demo.command**. Its explicit weapon-only profile uses confidence0.35 and0.3s persistence; enable fire/smoke in Operator center for the next source. Both handle spaces in paths. Neither opens a camera automatically. Start is always an explicit action.
+On this Mac, double-click **dist/SENTINAL.app**. In the complete V0.3.2 project ZIP the app is beside the source as **SENTINAL.app**. It opens the existing desktop directly. The app uses this project’s Python environment and models, so keep the folder intact. [Mac app instructions](docs/MACOS_APP.md). The terminal launcher **launch.command** remains available. For the bundled silent, public-domain moving-weapon demonstration, double-click **demo.command**. Its explicit weapon-only profile uses confidence0.35 and0.3s persistence; enable fire/smoke in Operator center for the next source. Both handle spaces in paths. Neither opens a camera automatically. Start is always an explicit action.
 
-For a fresh installation, install a compatible Python 3.12 interpreter, then run **install.command** once. It creates `.venv` inside this folder, installs pinned dependencies, verifies/downloads pinned model files and checks dependency consistency. Internet is needed during installation; normal inference runs locally. A signed standalone `.app` is not included.
+For a fresh installation, install a compatible Python 3.12 interpreter, then run **install.command** once. It creates `.venv` inside this folder, installs pinned dependencies, verifies/downloads pinned model files and checks dependency consistency. Internet is needed during installation; normal inference runs locally. The included Mac app is locally signed and built for this development Mac; it is not a portable standalone installer or Apple-notarized distribution. For a source-only checkout, rebuild it after installation with `.venv/bin/python tools/build_macos_app.py`.
 
 From Terminal:
 
 ```sh
-cd "/Users/prabhuram04yahoo.com/Documents/Bhupesh/Projects/Project Sentinal"
+cd "/Users/prabhuram04yahoo.com/Documents/Bhupesh/Projects/ProjectSentinal"
 ./launch.command
 # Or preselect a local video without starting capture:
 ./launch.command --video "/absolute/path/to/video.mp4"
 # Demonstration preset, still requiring Start:
 ./demo.command
 ```
+
+## First use of a local camera
+
+Click the refresh arrow beside the camera selector and respond to the macOS permission prompt. Choose the exact Mac or iPhone camera and press Start. Granting access refreshes the list if no camera is selected. Stop, Close and source changes cancel a pending start. The owner confirmed live Mac camera video in V0.3.2.
+
+## V0.3 website and private dashboard
+
+Hosted public website: [SENTINAL](https://sentinal-command-center-df4fc282.base44.app). Private native-authenticated dashboard: [Command center](https://sentinal-command-center-df4fc282.base44.app/app.html). Choose **Continue with Google** and use your authorized Google account. V0.3.1 repairs the initial login route; expired sessions and connection errors now have retry/sign-out controls. [Hosted setup and operations](docs/BASE44_V03.md). Hosting does not move inference into the browser or enable private video uploads.
+
+Double-click **web.command** to start the local website and dashboard. First launch asks you to create your own local administrator password; there is no shared default password. It pairs an owner-only local device file without starting capture or metadata delivery. The service opens at `http://127.0.0.1:8765/app`. Keep its terminal open; Control+C stops it.
+
+In the desktop app, open **Connected command center… → Load paired device file…**, choose `config/connected/edge-credentials.json`, then deliberately enable outbound incident metadata. Start a selected camera or video separately. Possible alerts and measured health reach the signed-in command center. Local incident recording is a separate opt-in setting. To use Base44, load the separately provisioned Base44 pairing instead; do not send local and hosted stores through an uncontrolled two-way sync.
+
+The responsive dashboard has overview, live monitoring, AI models, incident review, camera health and administration pages. Reviews persist with permissions, optimistic record versions and an audit trail. Viewers cannot review. An explicitly authorized local RAM preview is available; hosted CCTV video streaming is not implemented. The public website cannot read private incidents. PWA manifests and an offline reconnect page are included; these are web applications, not native Windows or mobile packages.
 
 ## V0.2.1 detection and simultaneous cameras
 
@@ -34,7 +47,7 @@ Open **Multi-camera monitor** for up to eight explicitly selected saved cameras.
 
 **Nearby CCTV** lists ONVIF-advertised camera services on the selected local interface after explicit Refresh. An advertisement does not prove authentication or video availability. Manual authorized addresses remain available. [Network setup details](docs/NEARBY_CCTV_V021.md) explain permissions, hidden/proprietary devices and supported limits.
 
-[Base44 feasibility](docs/BASE44_FEASIBILITY.md) evaluates a future website/installable interface while retaining the local inference engine. No website was deployed or private project data uploaded.
+[V0.3 connected architecture and setup](docs/CONNECTED_V03.md) and [edge integration](docs/EDGE_V03.md) describe the implemented private dashboard, authenticated incident API, native Base44 integration, retries and account roles. Hosted deployment and verification results are recorded in the current verification report; local and cloud stores are separate authorities, not automatic database mirrors.
 
 ## Monitor a source
 

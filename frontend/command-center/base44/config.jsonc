@@ -1,0 +1,11 @@
+{
+  "name": "sentinal-command-center",
+  "description": "SENTINAL public website and human-reviewed private command center",
+  "visibility": "public",
+  "site": {
+    "installCommand": "npm ci",
+    "buildCommand": "npm run build",
+    "serveCommand": "npm run dev",
+    "outputDirectory": "./dist"
+  }
+}

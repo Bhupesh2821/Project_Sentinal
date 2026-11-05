@@ -1,0 +1,100 @@
+{
+  "scope": "Explicit licensed public evaluation fixtures only; no private camera/user media; labels approximate one-annotator development calibration",
+  "files": [
+    {
+      "path": "data/v021-items/cleaver.jpg",
+      "sha256": "e4c29cec06076bc95dd5eb1c1e6346676bbcaa1165b7b8cc6e054341c343db32",
+      "license": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Foster_Cleaver.jpg",
+      "author": "GCNorton",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "changes": "Publisher preview/original image downloaded; no additional image editing for stored source photo"
+    },
+    {
+      "path": "data/v021-items/cleaver.source.json",
+      "sha256": "6a67df039a78678dbd7f22469f5c6da474fe73db0edf546e259590a0a1de8af2"
+    },
+    {
+      "path": "data/v021-items/scissors_household.jpg",
+      "sha256": "ef8d810190832a245e44541a8aab300fb1613d28701a97402cdf0bb403fa1d80",
+      "license": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Standard_household_scissors.jpg",
+      "author": "Doggerelblogger",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "changes": "Publisher preview/original image downloaded; no additional image editing for stored source photo"
+    },
+    {
+      "path": "data/v021-items/scissors_household.source.json",
+      "sha256": "9ed42364d12a50e51553d870ca388e9cf7129e1811a99b5d61465981217afa55"
+    },
+    {
+      "path": "data/v021-items/scissors_pair.jpg",
+      "sha256": "6d1607dfb8fe898c6cabe1c74996929ff23835984acd04554d88c8e607d3e629",
+      "license": "CC BY 1.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2scissors.jpg",
+      "author": "Modeha (source page scan credit)",
+      "license_url": "https://creativecommons.org/licenses/by/1.0",
+      "changes": "Publisher preview/original image downloaded; no additional image editing for stored source photo"
+    },
+    {
+      "path": "data/v021-items/scissors_pair.source.json",
+      "sha256": "4cd51d0682bdd8b84594013e9a36f376a04ecb309e50068c7d1df2c0a21252dd"
+    },
+    {
+      "path": "data/v021-items/spoon_chopsticks.jpg",
+      "sha256": "ae6476cdafa907d9ce49ba1cba8001cf1b17e161779b321eea95118830660022",
+      "license": "CC BY 2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Spoon_and_chopsticks.jpg",
+      "author": "chee.hong",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "changes": "Publisher preview/original image downloaded; no additional image editing for stored source photo"
+    },
+    {
+      "path": "data/v021-items/spoon_chopsticks.source.json",
+      "sha256": "b3cbcde541a316d5f9058609ffc9c6f727d7da5c5c4e8afb3f141f558aad44e6"
+    },
+    {
+      "path": "data/v021-items/spoon_small.jpg",
+      "sha256": "312d8c2622cfa67f6bc45dcf1e4ce7269424f5d8f57eee2ad4d49079b128aa42",
+      "license": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Small_spoon.jpg",
+      "author": "Dodek",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "changes": "Publisher preview/original image downloaded; no additional image editing for stored source photo"
+    },
+    {
+      "path": "data/v021-items/spoon_small.source.json",
+      "sha256": "f80f3a6f96aa3e70faefdc400fb3dc642c689f1c51be3cf4f0d13b6fd1163a3a"
+    },
+    {
+      "path": "data/v021-items/toy_gun.jpg",
+      "sha256": "a22cd669f4eb21caa8b633778abd12c944cea76b2786f81c2f549283278db565",
+      "license": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Toy_gun.jpg",
+      "author": "Gpkp",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "changes": "Publisher preview/original image downloaded; no additional image editing for stored source photo"
+    },
+    {
+      "path": "data/v021-items/toy_gun.source.json",
+      "sha256": "0cae90fefc73bc957d5016b35f0d1615ec004a78085616338a7e730d1f3a723e"
+    },
+    {
+      "path": "data/v021-items/utility_blade.jpg",
+      "sha256": "4cad0db228d9a40ed634736f3414c5acdb8a7425f7bb571617d839517cc2d2b6",
+      "license": "CC BY-SA 2.5",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Utility_knife.jpg",
+      "author": "Mat\u011bj Ba\u0165ha",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.5",
+      "changes": "Publisher preview/original image downloaded; no additional image editing for stored source photo"
+    },
+    {
+      "path": "data/v021-items/utility_blade.source.json",
+      "sha256": "e714fd7cdaa5b665cc147e3b6b927863470a293ba53d98579064b9a5f7b52079"
+    },
+    {
+      "path": "data/v021-items/labels.json",
+      "sha256": "7f83e3275b002cf7f77d697fd2cad9fc4820db79c8a11b3b7fb024781e92ff14"
+    }
+  ]
+}
