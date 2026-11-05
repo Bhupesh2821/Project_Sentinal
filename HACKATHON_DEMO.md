@@ -1,4 +1,4 @@
-# SENTINAL V0.3.1 hackathon demonstration — November 4, 2026
+# SENTINAL V0.3.2 demonstration — November 4, 2026
 
 For the Mac application, open `dist/SENTINAL.app` (or the `SENTINAL.app` beside the packaged source). It starts idle; use its video/source controls and Start. The `demo.command` preset remains available. For the hosted dashboard, select **Continue with Google**; the initial provider route was corrected in V0.3.1.
 
@@ -13,6 +13,8 @@ Use actual model outputs and describe every observation as possible. The demo is
 7. For the hosted route, sign in through Base44 and load `config/connected/base44-edge.json`, the separate Base44 pairing, instead of the local one. Cloud delivery carries metadata only; the hosted Live page does not stream private CCTV. Use only the verified published links in the verification report. Do not expose the local service publicly.
 8. Show the public site at desktop and mobile widths, current persisted incident status and runtime diagnostics. Layout emulation does not establish physical iPhone/Android/Windows acceptance.
 9. Stop monitoring, disable outbound delivery and close the desktop. Stop the local service with Control+C. An in-flight metadata request may finish within its bounded timeout. Camera images/audio are not recorded by this sequence.
+
+For first-use Mac camera access, click the refresh arrow, respond to macOS consent and then select the exact device.
 
 For live input select the exact Mac/iPhone identity or an authorized saved ONVIF/RTSP source before Start. An unavailable identity never silently switches cameras. The nearby CCTV list shows compatible ONVIF advertisements on an explicitly selected interface, not every Wi-Fi device. Physical CCTV/iPhone acceptance remains separate from loopback integration.
 

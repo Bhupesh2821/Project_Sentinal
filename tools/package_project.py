@@ -122,7 +122,7 @@ def eligible_source(path,root):
     # Historical camera reports can contain personal names and raw device IDs.
     # Preserve them locally; ship only current technical/hash-only V0.2 evidence.
     if relative.parts[:2]==('docs','evidence'):
-        return len(relative.parts)>2 and relative.parts[2].startswith(('v02-','v021-','v03-','v031-'))
+        return len(relative.parts)>2 and relative.parts[2].startswith(('v02-','v021-','v03-','v031-','v032-'))
     if len(relative.parts)>1 and relative.parts[0]=='docs' and relative.parts[1].startswith('verification'):
         return path.suffix=='.md'
     return True

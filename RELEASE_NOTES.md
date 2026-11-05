@@ -1,3 +1,7 @@
+# SENTINAL V0.3.2
+
+The desktop requests local-camera consent from the app window on Start or Refresh. It validates the exact selected device before capture begins. Stop, Close and source or selection changes cancel the pending start, including Stop on a camera-wall tile. The owner confirmed live Mac camera video. The Base44 dashboard uses the verified V0.3.1 sign-in flow.
+
 # SENTINAL V0.3.1 — dashboard access repair and native Mac app
 
 The first hosted sign-in button incorrectly targeted `/login`, which the CLI static host served as the public landing page. The earlier existing-session checks missed this path. The dashboard now uses Base44's supported Google provider entry, with visible connection/session errors, Retry connection, sign-out/switch-account controls and old-login-link recovery. Permissions and existing incidents remain intact. Actual first-entry navigation and callback acceptance are recorded separately from Google password/consent completion.

@@ -1,10 +1,10 @@
 # SENTINAL macOS application
 
-The actual macOS application is **`dist/SENTINAL.app`** inside this development project. The V0.3.1 project ZIP places the same bundle at **`SENTINAL/SENTINAL.app`**, beside its source and launcher scripts. In Finder, open the project, open `dist`, then double-click **SENTINAL**. It opens the existing desktop directly, without manually starting a terminal service. Camera capture, recording, sound and outbound metadata remain off until you enable the relevant controls and press Start.
+The actual macOS application is **`dist/SENTINAL.app`** inside this development project. The V0.3.2 project ZIP places the same bundle at **`SENTINAL/SENTINAL.app`**, beside its source and launcher scripts. In Finder, open the project, open `dist`, then double-click **SENTINAL**. It opens the existing desktop directly, without manually starting a terminal service. Camera capture, recording, sound and outbound metadata remain off until you enable the relevant controls and press Start.
 
 This is a **project-linked native app**, not a portable standalone installer. Its small native Mach-O executable embeds the installed Python framework and loads this project's existing `.venv`, source and models. Keep the full project and its environment in place. It can find the project beside/above the bundle; its saved local project location is a fallback. Moving only the app to a different computer does not install Python, dependencies or models.
 
-The bundle has its own SENTINAL icon, application identifier, version, camera permission text and local-network purpose text. A camera request still requires explicit monitoring. It does not request microphone recording. The local build has an ad-hoc code signature, not a Developer ID signature or Apple notarization. Physical camera permission behavior under this new app identity remains an on-device acceptance step; the verification below deliberately never opened a camera.
+The bundle has its own SENTINAL icon, application identifier, version, camera permission text and local-network purpose text. A camera request still requires explicit monitoring. It does not request microphone recording. The local build has an ad-hoc code signature, not a Developer ID signature or Apple notarization. The owner confirmed live Mac video in V0.3.2 after using the first-use consent flow. See the current verification report.
 
 ## Use
 

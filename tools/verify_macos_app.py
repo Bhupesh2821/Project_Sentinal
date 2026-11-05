@@ -20,7 +20,7 @@ def spawn_probe(output):
 
 
 def run_inside_bundle(output):
-    from PySide6.QtCore import QTimer
+    from PySide6.QtCore import QTimer,QCameraPermission,QThread,Qt
     from PySide6.QtWidgets import QApplication
     from sentinal import application,__version__
     from sentinal.interface import main_window
@@ -62,6 +62,10 @@ def run_inside_bundle(output):
                     check('app_identity',QApplication.applicationName()=='SENTINAL' and info['CFBundleName']=='SENTINAL')
                     check('app_version_matches_source',info['CFBundleShortVersionString']==__version__)
                     check('camera_usage_description_present',bool(info.get('NSCameraUsageDescription')))
+                    permission=QApplication.instance().checkPermission(QCameraPermission())
+                    report['macos_camera_permission_state']=permission.name
+                    report['camera_permission_requested']=False
+                    check('camera_permission_state_queried_on_gui_thread',QThread.currentThread()==QApplication.instance().thread() and permission in (Qt.PermissionStatus.Granted,Qt.PermissionStatus.Denied,Qt.PermissionStatus.Undetermined))
                     check('real_venv_python_for_child_processes',sys.executable==str(ROOT/'.venv/bin/python'))
                     check('capture_waited_for_explicit_start',window.worker.pipeline is None)
                     check('real_motion_fixture_selected',window.video_path==str(ROOT/'data/v02-demo/weapon_range_motion.mp4'))

@@ -68,7 +68,7 @@ class CameraWallDialog(QDialog):
         enable=QPushButton('Show all objects + enable hazard models');enable.clicked.connect(main.enable_all_detection);side.addWidget(enable)
         settings=QPushButton('Detection / alert settings…');settings.clicked.connect(main.open_control_center);side.addWidget(settings)
         self.start_button=QPushButton('Start checked cameras');self.start_button.setObjectName('primary');self.start_button.clicked.connect(self.start_checked);side.addWidget(self.start_button)
-        self.stop_all=QPushButton('Stop all cameras');self.stop_all.clicked.connect(lambda:self.worker.request_stop());self.stop_all.setEnabled(False);side.addWidget(self.stop_all)
+        self.stop_all=QPushButton('Stop all cameras');self.stop_all.clicked.connect(self.stop_requested);self.stop_all.setEnabled(False);side.addWidget(self.stop_all)
         self.message=QLabel('Recording, snapshots and audio follow the explicit controls. No discovery action starts video.');self.message.setWordWrap(True);side.addWidget(self.message)
         close=QPushButton('Close and release cameras');close.clicked.connect(self.close);side.addWidget(close)
         split.addWidget(controls)
@@ -76,12 +76,33 @@ class CameraWallDialog(QDialog):
         self.worker=MultiCameraWorker(main.config,self,max_cameras=8)
         self.worker.state_changed.connect(self._on_state);self.worker.error.connect(self._on_error);self.worker.finished.connect(self._finished)
         self.worker.start();self.timer=QTimer(self);self.timer.setInterval(40);self.timer.timeout.connect(self._poll);self.timer.start()
+        self.main._camera_permission.pending_changed.connect(self._permission_changed)
+        self.main._camera_permission.error.connect(self._permission_error)
+        self.table.itemChanged.connect(self._selection_changed)
         self.refresh();self.apply_options()
     @property
     def setup_running(self):return self.worker.isRunning()
     @property
     def is_monitoring(self):return self.worker.is_monitoring or any(state in {'loading','running','reconnecting','stopping'} for state in self.states.values())
+    def _permission_error(self,message):
+        if not self._closing:self.message.setText(message)
+    def _permission_changed(self,pending):
+        if self._closing:return
+        self.start_button.setEnabled(not pending and not self.main._busy)
+        self.stop_all.setEnabled(self.is_monitoring or self.main._camera_permission.pending_for(self))
+        if self.main._camera_permission.pending_for(self):self.message.setText('Waiting for macOS camera permission. Stop all cancels this pending start; no additional source has opened.')
+        elif not pending and 'Waiting for macOS camera permission' in self.message.text():self.message.setText('Camera permission decision received or start cancelled. Select the intended cameras and press Start again when ready.')
+        self.activity_changed.emit()
+    def _selection_changed(self,*_):
+        self.main._camera_permission.cancel(self)
+    def stop_requested(self):
+        self.main._camera_permission.cancel(self)
+        self.worker.request_stop()
+    def stop_source(self,ident):
+        self.main._camera_permission.cancel(self)
+        self.worker.request_stop(ident)
     def refresh(self):
+        self.main._camera_permission.cancel(self)
         checked={self.table.item(i,0).data(Qt.ItemDataRole.UserRole) for i in range(self.table.rowCount()) if self.table.item(i,0).checkState()==Qt.CheckState.Checked}
         if not self.table.rowCount():checked.update(self._selected)
         records=self.registry.list_cameras();self.table.setRowCount(len(records))
@@ -105,8 +126,27 @@ class CameraWallDialog(QDialog):
         except Exception:self.message.setText('Could not start the selection. Choose 1–8 cameras and check their saved address / credentials.')
     def start_selections(self,selections):
         if self.main._busy:raise ValueError('Stop the single source first')
-        self.apply_options()
+        if self.main._camera_permission.pending:return
         selections=tuple(selections)
+        if any(selection.spec.kind=='camera' for selection in selections):
+            self.main._camera_permission.ensure(self,lambda:self._start_permitted(selections))
+            return
+        self._start_permitted(selections)
+    def _start_permitted(self,selections):
+        if self._closing or self._closed or self.main._closing or self.main._busy:return
+        # Resolve the same saved identities again, and reject changed local devices.
+        try:fresh=tuple(self.registry.resolve(selection.record.camera_id) for selection in selections)
+        except Exception:
+            self.message.setText('A selected camera is no longer configured. Refresh the list and select the intended cameras again. No camera was opened.');return
+        if any(before.spec!=after.spec for before,after in zip(selections,fresh)):
+            self.message.setText('A selected camera changed during permission checking. Select the intended cameras and press Start again.');return
+        local_ids={selection.spec.camera_device_id for selection in fresh if selection.spec.kind=='camera'}
+        if local_ids:
+            from sentinal.vision.camera_manager import discover_cameras
+            if not local_ids.issubset({device.device_id for device in discover_cameras()}):
+                self.message.setText('An exact selected camera is unavailable. Refresh camera setup and select it again; no alternative camera was opened.');return
+        self.apply_options()
+        selections=fresh
         if not self.worker.request_start(selections):raise ValueError('The camera worker is shutting down. Close and reopen the monitoring window.')
         self._selected={s.record.camera_id:s for s in selections}
         for ident,tile in list(self.tiles.items()):
@@ -114,7 +154,7 @@ class CameraWallDialog(QDialog):
         for index,selection in enumerate(selections):
             ident=selection.record.camera_id
             if ident not in self.tiles:
-                tile=CameraTile(selection,self);tile.stop_requested.connect(self.worker.request_stop);self.tiles[ident]=tile
+                tile=CameraTile(selection,self);tile.stop_requested.connect(self.stop_source);self.tiles[ident]=tile
             self.grid.addWidget(self.tiles[ident],index//2,index%2)
             if self.states.get(ident) not in {'loading','running','reconnecting'}:
                 self.states[ident]='loading';self.tiles[ident].set_state('loading','Waiting for selected source')
@@ -179,7 +219,8 @@ class CameraWallDialog(QDialog):
                 try:self.registry.update_health(ident,connection_health='online',ai_status='active',frame_timestamp=packet.timestamp)
                 except Exception:self.message.setText('Camera health could not be saved. Check local storage permissions.')
         active=self.is_monitoring
-        self.model_combo.setEnabled(not active and not self.main._busy and not self.main._closing and not self.main._worker_dead and not self._closing)
+        self.start_button.setEnabled(not self.main._camera_permission.pending and not self.main._busy and not self._closing)
+        self.model_combo.setEnabled(not self.main._camera_permission.pending and not active and not self.main._busy and not self.main._closing and not self.main._worker_dead and not self._closing)
         if active!=self._last_activity:
             self._last_activity=active;self.activity_changed.emit()
         if active:self.main._refresh_control_center()
@@ -190,6 +231,7 @@ class CameraWallDialog(QDialog):
                 if self.states.get(ident) not in {'stopped','eof','error'}:self.states[ident]='error';tile.set_state('error','Monitoring worker stopped')
         self.close()
     def closeEvent(self,event):
+        self.main._camera_permission.cancel(self)
         if self.worker.isRunning():
             event.ignore();self._closing=True;self.start_button.setEnabled(False)
             self.message.setText('Releasing all selected cameras and model resources…')

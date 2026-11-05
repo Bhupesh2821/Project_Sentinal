@@ -26,4 +26,4 @@ os.environ["YOLO_OFFLINE"] = "true"
 os.environ["YOLO_AUTOINSTALL"] = "false"
 tempfile.tempdir = str(_LOCAL_PATHS["TMPDIR"])
 sys.pycache_prefix = str(_LOCAL_PATHS["PYTHONPYCACHEPREFIX"])
-__version__ = "0.3.1"
+__version__ = "0.3.2"

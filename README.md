@@ -1,4 +1,4 @@
-# SENTINAL V0.3.1 — Desktop App and Command Center
+# SENTINAL V0.3.2 — Desktop App and Command Center
 
 A local AI engine and connected web command-center hackathon prototype for **November 4, 2026**. It extends the existing Vision Core with real trained weapon and fire/smoke models, temporal incident assessment, local warnings and operator review. **Prototype accuracy is limited; detections are uncertain visual observations.**
 
@@ -6,7 +6,7 @@ The only project root is `/Users/prabhuram04yahoo.com/Documents/Bhupesh/Projects
 
 ## Launch
 
-On this Mac, double-click **dist/SENTINAL.app**. In the complete V0.3.1 project ZIP the app is beside the source as **SENTINAL.app**. It opens the existing desktop directly. The app uses this project’s Python environment and models, so keep the folder intact. [Mac app instructions](docs/MACOS_APP.md). The terminal launcher **launch.command** remains available. For the bundled silent, public-domain moving-weapon demonstration, double-click **demo.command**. Its explicit weapon-only profile uses confidence0.35 and0.3s persistence; enable fire/smoke in Operator center for the next source. Both handle spaces in paths. Neither opens a camera automatically. Start is always an explicit action.
+On this Mac, double-click **dist/SENTINAL.app**. In the complete V0.3.2 project ZIP the app is beside the source as **SENTINAL.app**. It opens the existing desktop directly. The app uses this project’s Python environment and models, so keep the folder intact. [Mac app instructions](docs/MACOS_APP.md). The terminal launcher **launch.command** remains available. For the bundled silent, public-domain moving-weapon demonstration, double-click **demo.command**. Its explicit weapon-only profile uses confidence0.35 and0.3s persistence; enable fire/smoke in Operator center for the next source. Both handle spaces in paths. Neither opens a camera automatically. Start is always an explicit action.
 
 For a fresh installation, install a compatible Python 3.12 interpreter, then run **install.command** once. It creates `.venv` inside this folder, installs pinned dependencies, verifies/downloads pinned model files and checks dependency consistency. Internet is needed during installation; normal inference runs locally. The included Mac app is locally signed and built for this development Mac; it is not a portable standalone installer or Apple-notarized distribution. For a source-only checkout, rebuild it after installation with `.venv/bin/python tools/build_macos_app.py`.
 
@@ -20,6 +20,10 @@ cd "/Users/prabhuram04yahoo.com/Documents/Bhupesh/Projects/ProjectSentinal"
 # Demonstration preset, still requiring Start:
 ./demo.command
 ```
+
+## First use of a local camera
+
+Click the refresh arrow beside the camera selector and respond to the macOS permission prompt. Choose the exact Mac or iPhone camera and press Start. Granting access refreshes the list if no camera is selected. Stop, Close and source changes cancel a pending start. The owner confirmed live Mac camera video in V0.3.2.
 
 ## V0.3 website and private dashboard
 

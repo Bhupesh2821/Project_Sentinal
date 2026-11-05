@@ -38,3 +38,6 @@ Sourceversion0.2.1. README/demo/release/architecture/fixture/modeldocsupdated. B
 
 
 2026-11-04 V0.3.1: user-reported dashboard failure reproduced: genericSDK /login route servedpubliclanding. Deployed supportedGoogleproviderentry, visible session/errorrecovery and readycontrols; owner independentlyconfirmedDashboardopens. ActualCocoa/LaunchServices project-linked dist/SENTINAL.app version0.3.1 built;22checks coverrealrecordedvideobox/score/possiblealert, spawnchild,Stop/release,normalQuit,nocamera/network/recording. FinalPython599tests passed83.44s, frontend21, authcallback/recovery18, focusedGit23. ExistingV03archive/sourcepreserved. Nativeappusesprojectvenv/framework, notportableinstaller; newidentitycamera/physicalmobile/CCTVacceptance remains. CurrentVERIFICATION_REPORT anddocs/MACOS_APP.md areauthoritative. SourceupdatesappendtoPR1 featurebranchwithseparateindex,noforce; releasechecksums/Driveactualreceipts arecompanionmanifest.
+
+
+2026-11-05 V0.3.2 adds GUI consent for local cameras and cancels stale starts. The owner confirmed live Mac video. Native recorded-video and read-only permission query passed23checks. Final regression632passed79.56s after repairing missing-camera guidance. V0.3.1 app/source/archive preserved. Git/Drive readback identifiers are in the companion release evidence.

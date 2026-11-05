@@ -75,3 +75,13 @@ def qt_application_lifetime():
     app.processEvents()
     gc.collect()
     QCoreApplication.sendPostedEvents(None,QEvent.Type.DeferredDelete)
+
+
+@pytest.fixture(autouse=True)
+def no_os_camera_permission_prompts(monkeypatch):
+    """UI component tests use fake consent; native/on-device acceptance is separate."""
+    from PySide6.QtCore import Qt
+    from sentinal.interface.camera_permission import QtCameraPermissionBackend
+    monkeypatch.setattr(QtCameraPermissionBackend,'check',lambda self:Qt.PermissionStatus.Granted)
+    def unexpected_request(*_):raise AssertionError('Automated unit tests must not request real OS camera permission')
+    monkeypatch.setattr(QtCameraPermissionBackend,'request',unexpected_request)

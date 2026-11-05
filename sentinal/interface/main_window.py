@@ -23,6 +23,7 @@ from sentinal.storage.video_library import VideoLibrary
 from sentinal.interface.video_import_worker import VideoImportWorker
 from sentinal.interface.video_panel import VideoPanel
 from sentinal.interface.statistics_panel import StatisticsPanel
+from sentinal.interface.camera_permission import CameraPermissionGate
 
 
 def label(text, name=None):
@@ -45,6 +46,9 @@ class MainWindow(QMainWindow):
         self.config = config
         self.video_path = None
         self._busy = False
+        self._camera_permission = CameraPermissionGate(self)
+        self._camera_permission.error.connect(self._show_error)
+        self._camera_permission.pending_changed.connect(self._camera_permission_changed)
         self._closing = False
         self._worker_dead = False
         self._network_dialog = None
@@ -158,6 +162,7 @@ class MainWindow(QMainWindow):
         side.addWidget(label("MONITORING SOURCE", "sectionTitle"))
         self.source_type = QComboBox()
         self.source_type.addItems(["Camera", "Local video file", "Network camera"])
+        self.source_type.currentIndexChanged.connect(self._invalidate_camera_permission)
         self.source_type.currentIndexChanged.connect(self._source_type_changed)
         side.addWidget(self.source_type)
         camera_row = QHBoxLayout()
@@ -170,8 +175,8 @@ class MainWindow(QMainWindow):
         camera_row.addWidget(self.camera_combo, 1)
         self.refresh_button = QPushButton("↻")
         self.refresh_button.setFixedWidth(36)
-        self.refresh_button.setToolTip("Refresh device names without opening cameras")
-        self.refresh_button.clicked.connect(self.refresh_cameras)
+        self.refresh_button.setToolTip("Refresh exact camera choices; request camera permission if needed, without starting capture")
+        self.refresh_button.clicked.connect(self.request_camera_refresh)
         camera_row.addWidget(self.refresh_button)
         side.addLayout(camera_row)
         self.camera_note = label("Choose Mac, iPhone or another camera explicitly. No automatic substitution.", "muted")
@@ -406,10 +411,10 @@ class MainWindow(QMainWindow):
     def _sync_wall_activity(self):
         active=self._wall_monitoring()
         if self._edge_bridge is not None:self._edge_bridge._send_heartbeat()
-        self.model_combo.setEnabled(not active and not self._busy and not self._closing)
-        self.start_button.setEnabled(not active and not self._busy and not self._closing and not self._worker_dead)
-        if self._camera_manager_dialog is not None:self._camera_manager_dialog.set_monitoring_active(self._busy or active)
-        if not self._busy:
+        self.model_combo.setEnabled(not self._camera_permission.pending and not active and not self._busy and not self._closing)
+        self.start_button.setEnabled(not self._camera_permission.pending and not active and not self._busy and not self._closing and not self._worker_dead)
+        if self._camera_manager_dialog is not None:self._camera_manager_dialog.set_monitoring_active(self._camera_permission.pending or self._busy or active)
+        if not self._busy and not self._camera_permission.pending:
             self.status_chip.setText('●  MULTI-CAMERA' if active else '●  STANDBY')
             self.connection_label.setText('Monitoring in the multi-camera window' if active else 'No single source active')
 
@@ -618,9 +623,40 @@ class MainWindow(QMainWindow):
         else:self._control_center.update_runtime(self._state,self.source_name.text(),packet,cameras)
 
     def _camera_selection_changed(self, *_):
+        self._invalidate_camera_permission()
         device = self.camera_combo.currentData()
         if device is not None:
             self._selected_camera_id = device.device_id
+
+    def _invalidate_camera_permission(self,*_):
+        self._camera_permission.cancel()
+
+    def _camera_permission_changed(self,pending):
+        if not hasattr(self,'start_button') or self._closing:return
+        self._set_busy(self._busy)
+        if pending:
+            self.status_chip.setText('●  CAMERA PERMISSION')
+            self.connection_label.setText('Waiting for your macOS camera permission decision · Stop cancels this monitoring request')
+        elif not self._busy and not self._wall_monitoring():
+            self.status_chip.setText('●  STANDBY')
+            self.connection_label.setText('No camera source active')
+
+    def _refresh_after_camera_permission(self):
+        if self._closing or self._busy or self._wall_monitoring():return
+        # A newly visible device is never silently selected after granting access.
+        self._camera_initialized=True
+        self.refresh_cameras()
+        self.connection_label.setText('Camera access allowed. Select the exact camera, then press Start. No camera was opened.')
+        self.camera_note.setText('Select the exact Mac or iPhone camera and press Start; permission alone does not activate it.')
+
+    def _refresh_after_camera_start_consent(self):
+        self._refresh_after_camera_permission()
+        if not self._closing and self.camera_combo.currentData() is None:
+            self._show_error('Select the exact camera before starting monitoring. Camera access is allowed; no camera has been opened.')
+
+    def request_camera_refresh(self):
+        if self._closing or self._busy or self._wall_monitoring():return
+        self._camera_permission.ensure(self,self._refresh_after_camera_permission)
 
     def refresh_cameras(self):
         previous = self._selected_camera_id
@@ -637,6 +673,8 @@ class MainWindow(QMainWindow):
                     self._selected_camera_id = devices[selected - 1].device_id
             self.camera_combo.setCurrentIndex(selected)
         self._camera_initialized = True
+        if previous and not selected and self._camera_permission.pending_for(self):
+            self._camera_permission.cancel(self)
         if previous and not selected:
             self.camera_note.setText("The selected camera is unavailable. Reconnect it or explicitly choose another; no replacement will open.")
         elif not devices:
@@ -807,10 +845,11 @@ class MainWindow(QMainWindow):
         return getattr(self, "_video_names", {}).get(str(filename), Path(filename).name)
 
     def _source_type_changed(self, *_):
+        pending=self._camera_permission.pending
         is_camera = self.source_type.currentIndex() == 0
         is_stream = self.source_type.currentIndex() == 2
-        self.camera_combo.setEnabled(is_camera and not self._busy and not self._closing)
-        self.refresh_button.setEnabled(is_camera and not self._busy and not self._closing)
+        self.camera_combo.setEnabled(is_camera and not pending and not self._busy and not self._closing)
+        self.refresh_button.setEnabled(is_camera and not pending and not self._busy and not self._closing)
         for widget in (self.stream_url, self.stream_username, self.stream_password):
             widget.setVisible(is_stream)
             widget.setEnabled(is_stream and not self._busy and not self._closing)
@@ -861,7 +900,7 @@ class MainWindow(QMainWindow):
         return SourceSpec("stream", urlunsplit((parts.scheme, netloc, parts.path, parts.query, parts.fragment)))
 
     def start_monitoring(self):
-        if self._busy or self._closing:
+        if self._busy or self._closing or self._camera_permission.pending:
             return
         if self._wall_monitoring():
             self._show_error('Stop the camera wall before starting a separate single source.');return
@@ -881,13 +920,30 @@ class MainWindow(QMainWindow):
             else:
                 device = self.camera_combo.currentData()
                 if device is None or not device.device_id:
-                    self._show_error("Select the exact camera you want before starting. Refresh if your Mac or iPhone camera is missing.")
+                    self._camera_permission.ensure(self,self._refresh_after_camera_start_consent)
                     return
                 spec = SourceSpec("camera", device.index, camera_device_id=device.device_id, camera_name=device.name)
                 source_text = self.camera_combo.currentText()
         except (ValueError, TypeError):
             self._show_error("Enter a valid RTSP, RTSPS, HTTP or HTTPS video address and check its port. No connection has been started.")
             return
+        if spec.kind=='camera':
+            self._camera_permission.ensure(self,lambda:self._start_permitted_camera(spec,source_text))
+            return
+        self._begin_monitoring(spec,source_text)
+
+    def _start_permitted_camera(self,spec,source_text):
+        if self._closing or self._busy or self._wall_monitoring() or self.source_type.currentIndex()!=0:return
+        current=self.camera_combo.currentData()
+        if current is None or current.device_id!=spec.camera_device_id:return
+        self.refresh_cameras()
+        current=self.camera_combo.currentData()
+        if current is None or current.device_id!=spec.camera_device_id:
+            self._show_error('The selected camera changed or disappeared while permission was checked. Select it explicitly and press Start again. No other camera was opened.');return
+        self._begin_monitoring(spec,source_text)
+
+    def _begin_monitoring(self,spec,source_text):
+        if self._closing or self._busy or self._wall_monitoring():return
         self._current_spec = spec
         selection = self._registry_selection
         self._registry_camera_id = selection.record.camera_id if selection and selection.spec == spec else None
@@ -908,6 +964,10 @@ class MainWindow(QMainWindow):
         self.worker.request_start(spec)
 
     def stop_monitoring(self):
+        if self._camera_permission.pending:
+            self._camera_permission.cancel()
+            self.connection_label.setText('Camera start cancelled. No monitoring began; finish any open macOS permission dialog before retrying.')
+            return
         if self._busy:
             self.stop_button.setEnabled(False)
             self.pause_button.setEnabled(False)
@@ -917,15 +977,16 @@ class MainWindow(QMainWindow):
             self.worker.request_stop()
 
     def _set_busy(self, busy):
+        pending=self._camera_permission.pending
         self._busy = busy
-        self.model_combo.setEnabled(not busy and not self._wall_monitoring() and not self._closing and not self._worker_dead)
-        self.start_button.setEnabled(not busy and not self._wall_monitoring() and not self._closing and not self._worker_dead)
-        self.stop_button.setEnabled(busy and not self._closing)
-        self.source_type.setEnabled(not busy and not self._closing and not self._worker_dead)
+        self.model_combo.setEnabled(not pending and not busy and not self._wall_monitoring() and not self._closing and not self._worker_dead)
+        self.start_button.setEnabled(not pending and not busy and not self._wall_monitoring() and not self._closing and not self._worker_dead)
+        self.stop_button.setEnabled((busy or pending) and not self._closing)
+        self.source_type.setEnabled(not pending and not busy and not self._closing and not self._worker_dead)
         self._source_type_changed()
         self._update_import_controls()
         self.camera_manager_button.setEnabled(not busy and not self._closing)
-        if self._camera_manager_dialog is not None:self._camera_manager_dialog.set_monitoring_active(busy or self._wall_monitoring())
+        if self._camera_manager_dialog is not None:self._camera_manager_dialog.set_monitoring_active(pending or busy or self._wall_monitoring())
         is_file = self._current_spec is not None and self._current_spec.kind == "file"
         self.pause_button.setEnabled(busy and is_file and not self._closing and self._state in ("running", "paused"))
         self.seek_slider.setEnabled(busy and is_file and bool(self._playback.get("can_seek")) and not self._closing)
@@ -1056,6 +1117,7 @@ class MainWindow(QMainWindow):
             event.ignore()
 
     def closeEvent(self, event):
+        self._camera_permission.cancel()
         wall_busy=self._camera_wall is not None and self._camera_wall.setup_running
         network_busy = self._network_dialog is not None and self._network_dialog.setup_running
         camera_busy = self._camera_manager_dialog is not None and self._camera_manager_dialog.setup_running
